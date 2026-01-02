@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GUÍA: Criptografía (Premium BW)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: justify;
+        }
+
+        /* DISEÑO ACADEMIA HOLMES (Violeta) */
+        header {
+            border-bottom: 4px solid #a855f7;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #7e22ce;
+            font-weight: 800;
+            font-size: 2.2em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-left: 6px solid #a855f7;
+            padding-left: 15px;
+            color: #7e22ce;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #faf5ff;
+            padding: 10px 15px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #e9d5ff;
+            padding: 10px;
+        }
+
+        .rubric-table th {
+            background: #a855f7;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .tip-box {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '💡 CONSEJO:';
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .adapt-box {
+            background: #fafafa;
+            border: 2px dashed #666;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .session-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+
+        .session-title {
+            font-weight: 800;
+            color: #000;
+            font-size: 1.1em;
+            text-decoration: underline;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #333;
+            padding: 8px 15px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .print-btn:hover {
+            opacity: 1;
+            background: #333;
+            color: white;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Guía</button>
+
+    <header>
+        <div>
+            <h1>Criptografía Básica</h1>
+            <div style="color: #444; margin-top: 5px; font-weight: 600;">Trimestre 1 | Programa ACADEMIA HOLMES</div>
+        </div>
+        <div style="font-size: 3em;">🔐</div>
+    </header>
+
+    <h2>1. Ficha Técnica</h2>
+    <table class="rubric-table">
+        <tr>
+            <th style="width: 25%;">Nivel</th>
+            <td>Primaria (4º - 6º)</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>1 Trimestre</td>
+        </tr>
+        <tr>
+            <th>Áreas</th>
+            <td>Matemáticas (Lógica), Historia, Lengua</td>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <td>Máquina Enigma de Papel y mensajes cifrados.</td>
+        </tr>
+    </table>
+
+    <h2>2. Fundamentación Pedagógica</h2>
+    <p>Las matemáticas no son solo números, ¡son un lenguaje secreto! En este taller, los alumnos descubren que los
+        códigos sirven para proteger mensajes. Convertimos el cálculo mental en una herramienta de espionaje, lo que lo
+        hace mucho más divertido. Trabajamos la lógica y la paciencia, dos superpoderes necesarios para cualquier
+        detective.</p>
+
+    <h2>3. Concreción Curricular</h2>
+    <div class="tip-box" style="border-color: #a855f7; background: #fff;">
+        <p><strong>Competencias Clave Trabajadas:</strong></p>
+        <ul>
+            <li><strong>Competencia Matemática (STEM):</strong> Usar las operaciones básicas (sumar, restar) y patrones
+                para codificar y descodificar información.</li>
+            <li><strong>Competencia Lingüística (Leer y Escribir):</strong> Entender mensajes ocultos y redactar
+                informes de misión con claridad.</li>
+            <li><strong>Competencia Digital (Seguridad):</strong> Aprender que las contraseñas son como llaves secretas
+                que protegen nuestros datos.</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Saberes Básicos (Lo que aprendemos):</strong></p>
+        <table style="width:100%; font-size: 0.9em; border-collapse: collapse;">
+            <tr>
+                <td style="vertical-align: top; padding-right: 15px;">
+                    <strong>🔢 Matemáticas:</strong>
+                    <ul>
+                        <li>Series lógicas (qué número va después).</li>
+                        <li>Coordenadas (hundir la flota, mapas).</li>
+                        <li>Cifrados sencillos (César: mover letras).</li>
+                    </ul>
+                </td>
+                <td style="vertical-align: top;">
+                    <strong>🕵️ Lógica y Estrategia:</strong>
+                    <ul>
+                        <li>Resolución de enigmas paso a paso.</li>
+                        <li>Trabajo metódico (no rendirse si falla).</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>4. Materiales</h2>
+    <ul>
+        <li>Rueda de Cifrado César (dos círculos de cartulina).</li>
+        <li>Mensajes encriptados (hojas de misión).</li>
+        <li>Linternas de luz ultravioleta (tinta invisible) - ¡Opcional pero muy chulo!</li>
+        <li>Candados con código numérico.</li>
+    </ul>
+
+    <h2>5. Secuencia Didáctica Detallada</h2>
+    <div class="session-block">
+        <div class="session-title">Fase 1: La Escuela de Espías (Sesiones 1-3)</div>
+        <p>Entrenamiento básico. ¿Cómo se hablaban los espías antiguos?
+            <strong>Juego:</strong> "La Escítala Espartana". Enrollamos una tira de papel en un palo y escribimos. Al
+            desenrollarla, las letras están mezcladas. Solo se pueden leer con un palo del mismo grosor.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 2: El Código César (Sesiones 4-7)</div>
+        <p>Aprendemos a usar la Rueda de Claves. Si la A es la B, ¿qué pone aquí? "H-O-L-A" se convierte en "I-P-M-B".
+            <strong>Misión:</strong> Enviar mensajes secretos a otro grupo de la clase sin que el profesor (el
+            "enemigo") los entienda.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 3: El Enigma Matemático (Sesiones 8-10)</div>
+        <p>Códigos numéricos. Para descubrir la contraseña del candado, hay que resolver operaciones. (Ej. La clave es
+            el resultado de 25 + 15).</p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 4: Escape Room (Sesiones 11-12)</div>
+        <p><strong>El Gran Misterio:</strong> Preparamos una pequeña sala de escape en clase. Unos grupos diseñan los
+            enigmas y otros intentan salir antes de que se acabe el tiempo.</p>
+    </div>
+
+    <h2>6. Medidas de Inclusión y Desafío (Altas Capacidades)</h2>
+    <div class="adapt-box">
+        <strong>Nivel 1: Ampliación (Para todos)</strong>
+        </td>
+        <td>Se fatiga con mensajes largos. Necesita recordatorios constantes para revisar los fallos.</td>
+        <td>Baja tolerancia a la frustración. Abandona si no sale a la primera.</td>
+        </tr>
+        </table>
+
+</body>
+
+</html>

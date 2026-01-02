@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha Materiales: Constructor del Mundo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+            color: #1e293b;
+        }
+
+        header {
+            border-bottom: 2px solid #16a34a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            color: #15803d;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 1.8em;
+        }
+
+        .section {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #166534;
+            border-bottom: 1px dashed #86efac;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            columns: 2;
+            /* Dos columnas para ahorrar espacio */
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            accent-color: #16a34a;
+        }
+
+        .sketch-area {
+            height: 200px;
+            border: 2px dashed #94a3b8;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+    <button class="no-print" onclick="window.print()"
+        style="position:fixed; top:20px; right:20px; padding:10px 20px; background:#16a34a; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">🖨️
+        IMPRIMIR LISTA</button>
+
+    <header>
+        <div>
+            <h1>📦 MI KIT DE CONSTRUCCIÓN</h1>
+            <div>PROYECTO: ARQUITECTURA DEL MUNDO</div>
+        </div>
+        <div style="font-size: 3em;">🛖</div>
+    </header>
+
+    <div style="margin-bottom:20px; font-weight:bold;">
+        EQUIPO: __________________________________ <br>
+        TIPO DE VIVIENDA ELEGIDA: ____________________
+    </div>
+
+    <div class="section">
+        <h3>♻️ MATERIALES RECICLADOS (Estructura)</h3>
+        <ul>
+            <li><input type="checkbox"> Cartón base (Cajas viejas)</li>
+            <li><input type="checkbox"> Rollos de papel higiénico</li>
+            <li><input type="checkbox"> Botellas de plástico (Domo)</li>
+            <li><input type="checkbox"> Palillos de helado (Madera)</li>
+            <li><input type="checkbox"> Pajitas de papel</li>
+            <li><input type="checkbox"> Corcho blanco (Hielo)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🌿 MATERIALES NATURALES / TEXTURAS</h3>
+        <ul>
+            <li><input type="checkbox"> Arcilla o Plastilina (Adobe)</li>
+            <li><input type="checkbox"> Algodón (Nieve)</li>
+            <li><input type="checkbox"> Ramitas secas (Troncos)</li>
+            <li><input type="checkbox"> Arena (Desierto)</li>
+            <li><input type="checkbox"> Tela o Fieltro (Yurtas)</li>
+            <li><input type="checkbox"> Musgo artificial (Selva)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🛠️ HERRAMIENTAS DE ARQUITECTO</h3>
+        <ul>
+            <li><input type="checkbox"> Tijeras</li>
+            <li><input type="checkbox"> Cola Blanca / Pegamento</li>
+            <li><input type="checkbox"> Regla y Lápiz</li>
+            <li><input type="checkbox"> Pinceles y Pintura</li>
+        </ul>
+    </div>
+
+    <h3>✏️ BOCETO RÁPIDO DE LA MAQUETA</h3>
+    <div class="sketch-area">
+        Dibuja aquí cómo será tu casa y señala los materiales...
+    </div>
+
+    <div class="footer">
+        <div>Ficha de Planificación - Arquitectos del Futuro</div>
+        <div>Visto Bueno del Profesor: ___________</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GUÍA: Arquitectura del Mundo (Premium)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: justify;
+        }
+
+        /* DISEÑO ARQUITECTOS (Verde) */
+        header {
+            border-bottom: 4px solid #16a34a;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #15803d;
+            font-weight: 800;
+            font-size: 2.2em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-left: 6px solid #16a34a;
+            padding-left: 15px;
+            color: #15803d;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #f0fdf4;
+            padding: 10px 15px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #bbf7d0;
+            padding: 10px;
+        }
+
+        .rubric-table th {
+            background: #16a34a;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border: 2px solid #16a34a;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '🏠 CONSEJO DE ARQUITECTO:';
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #15803d;
+        }
+
+        .adapt-box {
+            background: #ecfdf5;
+            border: 2px dashed #16a34a;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .session-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #dcfce7;
+            padding-bottom: 15px;
+        }
+
+        .session-title {
+            font-weight: 800;
+            color: #15803d;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #16a34a;
+            color: #16a34a;
+            padding: 8px 15px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .print-btn:hover {
+            opacity: 1;
+            background: #16a34a;
+            color: white;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Guía</button>
+
+    <header>
+        <div>
+            <h1>Arquitectura del Mundo</h1>
+            <div style="color: #166534; margin-top: 5px; font-weight: 600;">Trimestre 1 | Programa ARQUITECTOS</div>
+        </div>
+        <div style="font-size: 3em;">⛺</div>
+    </header>
+
+    <h2>1. Ficha Técnica</h2>
+    <table class="rubric-table">
+        <tr>
+            <th style="width: 25%;">Nivel</th>
+            <td>Primaria (3º - 6º)</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>1 Trimestre (12 Sesiones)</td>
+        </tr>
+        <tr>
+            <th>Áreas</th>
+            <td>Ciencias Sociales (Geografía), Ciencias Naturales (Clima), Plástica</td>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <td>"La Aldea Global": Maqueta de una vivienda tradicional del mundo.</td>
+        </tr>
+    </table>
+
+    <h2>2. Fundamentación Pedagógica</h2>
+    <p>La arquitectura no es solo poner ladrillos. Es la respuesta de una cultura a su entorno. En este proyecto, los
+        alumnos descubren cómo la <strong>orografía</strong>, el <strong>clima</strong>, las
+        <strong>tradiciones</strong> y hasta la <strong>comida</strong> influyen en cómo construimos. ¿Por qué los
+        nómadas mongoles usan yurtas desmontables? ¿Por qué en Japón los tejados son inclinados? Viajaremos por el mundo
+        para entender estas conexiones.
+    </p>
+
+    <h2>3. Concreción Curricular</h2>
+    <div class="tip-box">
+        <p><strong>Competencias Clave Trabajadas:</strong></p>
+        <ul>
+            <li><strong>Competencia Ciudadana (Conciencia Cultural):</strong> Valorar la diversidad de formas de vida,
+                comida y tradiciones.</li>
+            <li><strong>Competencia STEM (Ciencia):</strong> Entender la adaptación al medio físico (orografía y
+                materiales locales).</li>
+            <li><strong>Competencia Artística:</strong> Recrear texturas y formas arquitectónicas con materiales
+                plásticos.</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Saberes Básicos:</strong></p>
+        <table style="width:100%; font-size: 0.9em; border-collapse: collapse;">
+            <tr>
+                <td style="vertical-align: top; padding-right: 20px;">
+                    <strong>🌍 Ciencias Sociales:</strong>
+                    <ul>
+                        <li>Entorno Físico: Montañas, desiertos, selvas.</li>
+                        <li>Cultura: Nómadas vs Sedentarios, alimentación y vestimenta.</li>
+                    </ul>
+                </td>
+                <td style="vertical-align: top;">
+                    <strong>🎨 Educación Artística:</strong>
+                    <ul>
+                        <li>Volumen y espacio en la maqueta.</li>
+                        <li>Uso creativo de materiales reciclados.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>4. Materiales Necesarios</h2>
+    <ul>
+        <li><strong>Estructura:</strong> Cartón, palillos, telas, papeles de texturas.</li>
+        <li><strong>Ambiente:</strong> Elementos para el entorno (arena, musgo, algodón).</li>
+        <li><strong>Investigación:</strong> "Fichas Culturales del Mundo" (Incluidas: Iglú, Tipi, Yurta, Minka, etc.).
+        </li>
+    </ul>
+
+    <h2>5. Secuencia Didáctica Detallada</h2>
+
+    <div class="session-block">
+        <div class="session-title">🗓️ Fase 1: Antropólogos del Hábitat (Sesiones 1-3)</div>
+        <p><strong>Investigación cultural:</strong> No solo miramos la casa, miramos quién vive dentro.
+            <br>Actividad: "El Detective Cultural". Analizamos una foto: ¿Qué comen? ¿Cómo visten? ¿Cómo es el suelo
+            (llano, montaña)? Deducimos su vivienda.
+        </p>
+    </div>
+
+    <div class="session-block">
+        <div class="session-title">🗓️ Fase 2: Materiales y Tradición (Sesiones 4-5)</div>
+        <p>¿Por qué el Tipi es cónico? (Viento y humo). ¿Por qué la Minka japonesa es de madera y papel?
+            <br>Actividad: Relacionar materiales locales con tradiciones (Ej: Usar piel de bisonte porque cazan
+            bisontes).
+        </p>
+    </div>
+
+    <div class="session-block">
+        <div class="session-title">🗓️ Fase 3: Taller "Aldea Global" (Sesiones 6-10)</div>
+        <p>Construcción de la maqueta.
+            <br><strong>Requisito:</strong> La maqueta debe incluir el entorno (río, nieve, arena) y algún elemento
+            cultural (un plato de comida típico, una herramienta).
+        </p>
+    </div>
+
+    <div class="session-block">
+        <div class="session-title">🗓️ Fase 4: Feria de las Culturas (Sesiones 11-12)</div>
+        <p>Exposición oral. Los alumnos explican no solo la arquitectura, sino la forma de vida. "Viven en yurtas porque
+            se mudan mucho para sus caballos".</p>
+    </div>
+
+    <h2>6. Medidas de Inclusión y Desafío</h2>
+    <div class="adapt-box">
+        <strong>Nivel 1: Ampliación</strong>
+        <p>Añadir personajes con vestimenta típica hecha de tela o papel.</p>
+
+        <br><strong>Nivel 2: Profundización</strong>
+        <p><strong>Reto Geográfico:</strong> Buscar en Google Earth una zona real donde pondrían su casa. ¿Coincide la
+            orografía?</p>
+
+        <br><strong>Nivel 3: Investigación</strong>
+        <p>Comparar con viviendas modernas sostenibles. ¿En qué se parece una Eco-Casa actual a una casa cueva antigua?
+        </p>
+    </div>
+
+    <h2>7. Evaluación</h2>
+    <table class="rubric-table">
+        <tr>
+            <th>Criterio</th>
+            <th>Excelente (3 pt)</th>
+            <th>Bien (2 pt)</th>
+            <th>Mejorable (1 pt)</th>
+        </tr>
+        <tr>
+            <td><strong>Coherencia Cultural</strong></td>
+            <td>Relaciona la casa con el clima, la comida y la tradición correctamente.</td>
+            <td>Explica la casa pero olvida el contexto cultural.</td>
+            <td>Mezcla elementos (Iglú con palmeras).</td>
+        </tr>
+        <tr>
+            <td><strong>Maqueta Detallada</strong></td>
+            <td>Incluye entorno, texturas realistas y elementos culturales.</td>
+            <td>La casa está bien pero el entorno está vacío.</td>
+            <td>Poco cuidado en el acabado.</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

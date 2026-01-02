@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de Misión: Operación Sombra</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #333;
+            color: #ccc;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .file-folder {
+            background: #fdf4ff;
+            /* Pale Purple */
+            color: #333;
+            width: 210mm;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform: rotate(-1deg);
+        }
+
+        .stamp-top {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 4px solid #a855f7;
+            /* Purple */
+            color: #a855f7;
+            font-weight: 800;
+            padding: 5px 10px;
+            transform: rotate(15deg);
+            font-size: 1.5em;
+        }
+
+        h1 {
+            border-bottom: 2px solid #a855f7;
+            color: #6b21a8;
+            text-transform: uppercase;
+        }
+
+        .map-area {
+            border: 2px dashed #999;
+            height: 400px;
+            margin: 20px 0;
+            position: relative;
+            background-color: #f5f5f5;
+            background-image: radial-gradient(#ccc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .mission-log {
+            border: 1px solid #ccc;
+            padding: 15px;
+            background: #fff;
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #333;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="file-folder">
+        <div class="stamp-top">TOP SECRET</div>
+
+        <h1>🗺️ MAPA TÁCTICO: OPERACIÓN SOMBRA</h1>
+        <p>AGENTE: ___________________________ | CODENAME: ________________</p>
+
+        <div class="mission-log">
+            <strong>OBJETIVOS DE LA MISIÓN:</strong>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><span class="checkbox"></span> 1. Infiltrarse en la zona de láseres (Gimnasio).</li>
+                <li><span class="checkbox"></span> 2. Recuperar el maletín con los códigos.</li>
+                <li><span class="checkbox"></span> 3. Escapar sin activar las alarmas.</li>
+            </ul>
+        </div>
+
+        <div class="map-area">
+            <span style="position: absolute; top: 10px; left: 10px; font-weight: bold; color: #999;">PLANO DE LA
+                INSTALACIÓN</span>
+            <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #bbb;">
+                [DIBUJAR AQUÍ EL RECORRIDO DE LA GYMKANA]
+            </div>
+
+            <!-- Decoration icons -->
+            <div style="position: absolute; top: 20%; left: 20%;">📍 INICIO</div>
+            <div style="position: absolute; bottom: 20%; right: 20%;">🏁 EXTRACCIÓN</div>
+        </div>
+
+        <p style="font-size: 0.8em; text-align: center; color: #666;">
+            ESTE DOCUMENTO SE AUTODESTRUIRÁ EN 5 MINUTOS (O CUANDO LO RECICLES)
+        </p>
+
+        <button
+            style="display: block; margin: 20px auto; padding: 10px 20px; background: #6b21a8; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+            onclick="window.print()">🖨️ IMPRIMIR MAPA</button>
+
+        <style>
+            @media print {
+                button {
+                    display: none;
+                }
+
+                body {
+                    background: white;
+                    padding: 0;
+                }
+
+                .file-folder {
+                    box-shadow: none;
+                    width: 100%;
+                    margin: 0;
+                    transform: none;
+                }
+            }
+        </style>
+    </div>
+
+</body>
+
+</html>

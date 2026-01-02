@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Investigación: Vivienda del Mundo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fdfbf7;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+            color: #1e293b;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        h1 {
+            font-family: 'Special Elite', cursive;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #b45309;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px double #b45309;
+            padding-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #78350f;
+            margin-bottom: 40px;
+        }
+
+        .paper-box {
+            background: white;
+            border: 2px solid #333;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .paper-box::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: rgba(255, 255, 200, 0.5);
+            border: 1px solid #ccc;
+            /* Tape effect */
+            transform: rotate(-2deg);
+        }
+
+        .label {
+            font-family: 'Special Elite', cursive;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #b45309;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .input-line {
+            border-bottom: 1px dashed #9ca3af;
+            height: 25px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .sketch-area {
+            height: 250px;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-style: italic;
+            background: white;
+        }
+
+        .stamp-area {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border: 3px double #b45309;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            text-align: center;
+            transform: rotate(15deg);
+            opacity: 0.7;
+            color: #b45309;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+            resize: none;
+            padding: 5px;
+            line-height: 1.5em;
+            background-image: linear-gradient(transparent, transparent 29px, #e5e7eb 30px);
+            background-size: 100% 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                padding: 0;
+                background-image: none;
+            }
+        }
+    </style>
+    <button class="no-print" onclick="window.print()"
+        style="position:fixed; top:20px; right:20px; padding:10px 20px; background:#b45309; color:white; border:none; border-radius:5px; cursor:pointer;">🖨️
+        IMPRIMIR FICHA</button>
+
+    <div class="stamp-area">TOP<br>SECRET</div>
+
+    <h1>Cuaderno de Campo</h1>
+    <div class="subtitle">Expedición Cultural - Arquitectos del Futuro</div>
+
+    <div class="grid-2">
+        <div class="paper-box">
+            <span class="label">NOMBRE DEL EXPLORADOR/A:</span>
+            <div class="input-line"></div>
+        </div>
+        <div class="paper-box">
+            <span class="label">VIVIENDA INVESTIGADA:</span>
+            <div class="input-line"></div>
+        </div>
+    </div>
+
+    <div class="paper-box">
+        <span class="label">📍 UBICACIÓN Y GEOGRAFÍA</span>
+        <p style="font-size:0.9em; color:#666; margin-bottom:5px;">¿Dónde está? ¿Hay montañas, ríos, desierto?</p>
+        <textarea rows="3"></textarea>
+    </div>
+
+    <div class="grid-2">
+        <div class="paper-box">
+            <span class="label">🧱 MATERIALES PRINCIPALES</span>
+            <textarea rows="4"></textarea>
+        </div>
+        <div class="paper-box">
+            <span class="label">🌡️ CLIMA Y ADAPTACIÓN</span>
+            <p style="font-size:0.8em; color:#666;">¿Por qué tiene esa forma? (Ej: Tejado inclinado por la nieve)</p>
+            <textarea rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="paper-box">
+        <span class="label">🎨 DIBUJO CIENTÍFICO</span>
+        <p style="font-size:0.9em; color:#666;">Dibuja la vivienda y señala sus partes importantes (entrada, tejado,
+            ventanas).</p>
+        <div class="sketch-area">
+            (Espacio para dibujar o pegar foto)
+        </div>
+    </div>
+
+    <div class="paper-box">
+        <span class="label">💡 CURIOSIDAD CULTURAL</span>
+        <p style="font-size:0.9em; color:#666;">¿Cómo viven dentro? ¿Qué comen? ¿Tienen alguna tradición especial?</p>
+        <textarea rows="3"></textarea>
+    </div>
+
+</body>
+
+</html>

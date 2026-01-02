@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Póster Visual del Proyecto (Canvas)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: #333;
+            max-width: 297mm;
+            /* A4 Landscape */
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d35400;
+            text-transform: uppercase;
+            border-bottom: 4px solid #d35400;
+            padding-bottom: 10px;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 2fr 1fr;
+            gap: 15px;
+            height: 600px;
+        }
+
+        .box {
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .box h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .box p {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Grid Areas */
+        .partners {
+            grid-column: 1;
+            grid-row: 1;
+            border-color: #7f8c8d;
+        }
+
+        .activities {
+            grid-column: 2;
+            grid-row: 1;
+            border-color: #2980b9;
+        }
+
+        .value {
+            grid-column: 3;
+            grid-row: 1;
+            border-color: #c0392b;
+            background: #fff5f5;
+        }
+
+        .relations {
+            grid-column: 4;
+            grid-row: 1;
+            border-color: #8e44ad;
+        }
+
+        .clients {
+            grid-column: 5;
+            grid-row: 1;
+            border-color: #27ae60;
+        }
+
+        .costs {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            border-color: #e67e22;
+        }
+
+        .revenue {
+            grid-column: 3 / span 3;
+            grid-row: 2;
+            border-color: #f1c40f;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Póster</button>
+
+    <h1>PÓSTER VISUAL DEL PROYECTO (CANVAS JUNIOR)</h1>
+
+    <div class="canvas-grid">
+        <div class="box partners">
+            <h3>🤝 Socios Clave</h3>
+            <p>¿Quién nos ayuda? (Proveedores, profes, padres...)</p>
+        </div>
+        <div class="box activities">
+            <h3>⚙️ Actividades</h3>
+            <p>¿Qué tenemos que hacer para fabricarlo?</p>
+            <hr>
+            <h3>🔑 Recursos</h3>
+            <p>¿Qué materiales necesitamos?</p>
+        </div>
+        <div class="box value">
+            <h3>🎁 PROPUESTA DE VALOR</h3>
+            <p>¿Qué problema solucionamos? ¿Por qué es genial nuestro invento?</p>
+            <div
+                style="height:50%; border:1px dashed #ccc; margin-top:10px; display:flex; align-items:center; justify-content:center; color:#ccc;">
+                (Dibuja aquí tu logo)</div>
+        </div>
+        <div class="box relations">
+            <h3>❤️ Relaciones</h3>
+            <p>¿Cómo tratamos a los clientes? (Amables, rápidos...)</p>
+            <hr>
+            <h3>🚚 Canales</h3>
+            <p>¿Dónde lo vendemos? (Feria, web...)</p>
+        </div>
+        <div class="box clients">
+            <h3>👥 Clientes</h3>
+            <p>¿Para quién es? (Niños, profes, abuelos...)</p>
+        </div>
+        <div class="box costs">
+            <h3>💸 Costes (Salidas)</h3>
+            <p>¿Qué nos cuesta dinero? (Materiales, fotocopias...)</p>
+        </div>
+        <div class="box revenue">
+            <h3>💰 Ingresos (Entradas)</h3>
+            <p>¿Cuánto cobraremos? ¿Cómo ganamos dinero?</p>
+        </div>
+    </div>
+</body>
+
+</html>

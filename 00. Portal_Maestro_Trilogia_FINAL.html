@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Maestro: Trilogía Premium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-deep: #0f172a;
+            --bg-card: #1e293b;
+            --bg-sidebar: #020617;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --acc-p1: #f97316;
+            --acc-p2: #a855f7;
+            --acc-p3: #22c55e;
+        }
+
+        /* LIGHT MODE OVERRIDES */
+        [data-theme="light"] {
+            --bg-deep: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-sidebar: #e2e8f0;
+            --text-main: #0f172a;
+            /* Darker main text (Slate 900) */
+            --text-muted: #475569;
+            /* Darker muted text (Slate 600) for better contrast */
+        }
+
+        /* LIGHT MODE SPECIFIC OVERRIDES */
+        [data-theme="light"] .ph-title,
+        [data-theme="light"] .landing-title {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .hero-name,
+        [data-theme="light"] .sb-item:hover,
+        [data-theme="light"] .sb-item.active {
+            color: #1e293b;
+            /* Ensure dark text on hover/active in light sidebar */
+        }
+
+        [data-theme="light"] .sb-item:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .hero-sub,
+        [data-theme="light"] .ph-sub,
+        [data-theme="light"] .bc-info p {
+            color: var(--text-muted);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* UTILITIES */
+        .hidden {
+            display: none !important;
+        }
+
+        .glow-p1 {
+            box-shadow: 0 0 15px var(--acc-p1);
+        }
+
+        .glow-p2 {
+            box-shadow: 0 0 15px var(--acc-p2);
+        }
+
+        .glow-p1:hover {
+            box-shadow: 0 0 25px var(--acc-p1);
+        }
+
+        .glow-p2:hover {
+            box-shadow: 0 0 25px var(--acc-p2);
+        }
+
+        .glow-p3 {
+            box-shadow: 0 0 15px var(--acc-p3);
+        }
+
+        .glow-p3:hover {
+            box-shadow: 0 0 25px var(--acc-p3);
+        }
+
+
+
+        .p-header {
+            margin-bottom: 40px;
+        }
+
+        .p-title {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .p-desc {
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .big-card {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .big-card:hover {
+            transform: translateX(10px);
+        }
+
+        .big-card.active {
+            border-color: white;
+            background-color: #334155;
+        }
+
+        .bc-icon {
+            font-size: 2rem;
+        }
+
+        .bc-info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .bc-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* DETAILS PANEL */
+        #details-panel {
+            padding: 40px;
+            background-color: var(--bg-deep);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .res-btn {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s;
+        }
+
+        .res-btn:hover {
+            background-color: #334155;
+            transform: translateY(-2px);
+        }
+
+        .res-btn.primary {
+            background-color: #1e293b;
+            border: 1px solid #64748b;
+        }
+
+        .cat-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #475569;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        /* MODALS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 5000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .game-modal {
+            background: var(--bg-card);
+            border: 1px solid #475569;
+            width: 90%;
+            max-width: 1000px;
+            height: 90%;
+            border-radius: 20px;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ef4444;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.1);
+        }
+
+        /* COMPONENTS */
+        .g-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+
+        .g-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        .g-btn.true {
+            background: #22c55e;
+            color: #000;
+        }
+
+        .g-btn.false {
+            background: #ef4444;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* LANDING */
+        #landing-screen {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .landing-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-grid {
+            display: flex;
+            gap: 40px;
+        }
+
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid #334155;
+            width: 260px;
+            padding: 40px 20px;
+            border-radius: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .hero-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        /* HOVER GLOWS */
+        .glow-p1:hover {
+            border-color: var(--acc-p1);
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .glow-p2:hover {
+            border-color: var(--acc-p2);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .glow-p3:hover {
+            border-color: var(--acc-p3);
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+        }
+
+        /* MAIN APP */
+        #main-interface {
+            display: flex;
+            height: 100vh;
+            opacity: 0;
+            transition: opacity 0.8s;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sb-header {
+            padding: 25px;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 1px solid #1e293b;
+            cursor: pointer;
+        }
+
+        .pg-title {
+            padding: 15px 25px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .sb-item {
+            padding: 12px 25px;
+            cursor: pointer;
+            color: #94a3b8;
+            border-left: 3px solid transparent;
+            transition: 0.2s;
+        }
+
+        .sb-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .sb-item.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .p1 .sb-item.active {
+            border-color: var(--acc-p1);
+            color: var(--acc-p1);
+        }
+
+        .p2 .sb-item.active {
+            border-color: var(--acc-p2);
+            color: var(--acc-p2);
+        }
+
+        .p3 .sb-item.active {
+            border-color: var(--acc-p3);
+            color: var(--acc-p3);
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 50px 60px;
+            overflow-y: auto;
+            background: radial-gradient(circle at top right, #1e293b 0%, transparent 40%);
+        }
+
+        .ph-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .ph-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ph-sub {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .ph-sub {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .big-card {
+            background: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .big-card:hover {
+            transform: translateY(-10px);
+            background: #252f45;
+        }
+
+        .big-card.active {
+            transform: scale(1.05);
+        }
+
+        /* DRAWER & BUTTONS */
+        #details-panel {
+            margin-top: 40px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: none;
+            border: 1px solid #334155;
+            animation: slideUp 0.4s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* New Discrete Buttons */
+        .res-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .res-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .cat-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #333;
+            color: #aaa;
+        }
+
+        .res-btn.primary .cat-tag {
+            background: white;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Print Button Mini */
+        .print-mini {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border: 1px solid #666;
+            border-radius: 4px;
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .print-mini:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* GAME MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 5000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .game-modal {
+            background: #1e293b;
+            width: 800px;
+            max-width: 90%;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #555;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #aaa;
+            line-height: 1;
+        }
+
+        .game-content {
+            margin-top: 20px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .g-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .g-btn.true {
+            background: #22c55e;
+            color: white;
+        }
+
+        .g-btn.false {
+            background: #ef4444;
+            color: white;
+        }
+
+        .g-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MODAL DE JUEGOS -->
+    <div id="gameModal" class="modal-overlay">
+        <div class="game-modal">
+            <span class="close-modal" onclick="closeGame()">×</span>
+            <h2 id="gTitle" style="color: #fbbf24; font-size: 2rem; margin: 0;">JUEGO</h2>
+            <div id="gContent" class="game-content">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- LANDING -->
+    <div id="landing-screen">
+        <img src="logo_apac.png" alt="APAC Logo" style="width: 220px; margin-bottom: 30px; opacity: 0.9;">
+        <div class="landing-title" style="text-align: center; line-height: 1.2;">
+            Portal Didáctico de APAC<br>
+            <span style="font-size: 0.5em; display:block; margin-top:10px;">Trilogía de Enriquecimiento</span>
+        </div>
+        <div class="hero-grid">
+            <div class="hero-card glow-p1" onclick="enterApp(1)">
+                <span class="hero-icon">🧭</span>
+                <div class="hero-name">EXPLORADORES</div>
+            </div>
+            <div class="hero-card glow-p2" onclick="enterApp(2)">
+                <span class="hero-icon">🕵️‍♂️</span>
+                <div class="hero-name">ACADEMIA HOLMES</div>
+            </div>
+            <div class="hero-card glow-p3" onclick="enterApp(3)">
+                <span class="hero-icon">🏙️</span>
+                <div class="hero-name">ARQUITECTOS</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN INTERFACE -->
+    <div id="main-interface" class="hidden">
+        <div class="sidebar">
+            <div class="sb-header" onclick="location.reload()">INICIO</div>
+
+            <div class="project-group p1">
+                <div class="pg-title">Exploradores</div>
+                <div class="sb-item" onclick="showTrimester(1,1)">🧬 Biología</div>
+                <div class="sb-item" onclick="showTrimester(1,2)">🏛️ Historia</div>
+                <div class="sb-item" onclick="showTrimester(1,3)">💡 Empresa</div>
+            </div>
+            <div class="project-group p2">
+                <div class="pg-title">Holmes</div>
+                <div class="sb-item" onclick="showTrimester(2,1)">🔐 Criptografía</div>
+                <div class="sb-item" onclick="showTrimester(2,2)">🔬 Forense</div>
+                <div class="sb-item" onclick="showTrimester(2,3)">🕵️‍♂️ Espías</div>
+            </div>
+            <div class="project-group p3">
+                <div class="pg-title">Arquitectos</div>
+                <div class="sb-item" onclick="showTrimester(3,1)">🏠 Arquitectura</div>
+                <div class="sb-item" onclick="showTrimester(3,2)">📰 La Voz de la Aldea</div>
+                <div class="sb-item" onclick="showTrimester(3,3)">🌍 Eco-Urbanismo</div>
+            </div>
+
+            <div style="margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px;">
+                <div class="sb-item" style="color: #fbbf24; font-weight: bold;"
+                    onclick="window.location.href='guia_didactica_profesor.html'">👩‍🏫 ZONA PROFESOR</div>
+                <div class="sb-item" style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px;"
+                    onclick="window.location.href='guia_uso_portal.html'">📘 Guía de Uso</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-header">
+                <h1 class="ph-title" id="p-title">Proyecto</h1>
+                <div class="ph-sub" id="p-desc">Descripción</div>
+            </div>
+
+            <div class="cards-container">
+                <div class="big-card" id="card-1" onclick="selectCard(1)">
+                    <span class="hero-icon" id="icon-1">Icon</span>
+                    <div class="hero-name" id="title-1">T1</div>
+                    <div class="hero-sub" id="desc-1">Desc</div>
+                </div>
+                <div class="big-card" id="card-2" onclick="selectCard(2)">
+                    <span class="hero-icon" id="icon-2">Icon</span>
+                    <div class="hero-name" id="title-2">T2</div>
+                    <div class="hero-sub" id="desc-2">Desc</div>
+                </div>
+                <div class="big-card" id="card-3" onclick="selectCard(3)">
+                    <span class="hero-icon" id="icon-3">Icon</span>
+                    <div class="hero-name" id="title-3">T3</div>
+                    <div class="hero-sub" id="desc-3">Desc</div>
+                </div>
+            </div>
+
+            <div id="details-panel">
+                <h2 id="dt-title" style="color:white; margin:0;">Recursos</h2>
+                <div class="res-grid" id="dt-list"></div>
+                <div id="dt-game" style="margin-top:20px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        // --- CONFIGURATION & STATE ---
+        const APP_STATE = {
+            schoolName: localStorage.getItem('schoolName') || 'Colegio de Exploradores',
+            soundEnabled: false,
+            level2Unlocked: false
+        };
+
+        // --- AUDIO SYSTEM ---
+        const AUDIO = {
+            bgm: new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b87a0273.mp3?filename=lo-fi-chill-hop-112467.mp3'), // Placeholder generic chill
+            sfxConfirm: new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.m4a'),
+            sfxError: new Audio('https://assets.mixkit.co/active_storage/sfx/2572/2572-preview.m4a'),
+            sfxWin: new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.m4a'),
+
+            toggle: function () {
+                APP_STATE.soundEnabled = !APP_STATE.soundEnabled;
+                if (APP_STATE.soundEnabled) {
+                    this.bgm.volume = 0.2;
+                    this.bgm.loop = true;
+                    this.bgm.play().catch(e => console.log("Audio requires interaction"));
+                } else {
+                    this.bgm.pause();
+                }
+                updateConfigUI();
+            },
+            playSFX: function (type) {
+                if (!APP_STATE.soundEnabled) return;
+                let sound = this[type];
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(e => { });
+                }
+            }
+        };
+
+
+        // --- GAME LOGIC ---
+        let activeGameTimer = null;
+
+        const GAMES = {
+            1: { // BIOLOGÍA (100 QUESTIONS EXPANSION)
+                title: "🧪 Detector de Errores",
+                pool: [
+                    // --- NIVEL 1 (Básico) ---
+                    // BIOLOGÍA
+                    { q: "¿Los virus son células?", a: false }, { q: "¿Las plantas fabrican su alimento?", a: true },
+                    { q: "¿El corazón bombea sangre?", a: true }, { q: "¿Los humanos tenemos 4 estómagos?", a: false },
+                    { q: "¿La piel es el órgano más grande?", a: true }, { q: "¿Los peces respiran por pulmones?", a: false },
+                    { q: "¿Las ranas son anfibios?", a: true }, { q: "¿Los osos polares comen pingüinos?", a: false },
+                    { q: "¿El Sol gira alrededor de la Tierra?", a: false }, { q: "¿La Luna tiene luz propia?", a: false },
+                    // GEOGRAFÍA (Básica)
+                    { q: "¿El Nilo está en África?", a: true }, { q: "¿Japón es una isla?", a: true },
+                    { q: "¿Madrid tiene playa?", a: false }, { q: "¿El Amazonas es un desierto?", a: false },
+                    { q: "¿La Antártida es hielo?", a: true }, { q: "¿El Everest es un volcán?", a: false },
+
+                    // --- NIVEL 2 (Intermedio) ---
+                    { q: "¿Los delfines son peces?", a: false }, { q: "¿El murciélago es un ave?", a: false },
+                    { q: "¿Las arañas son insectos?", a: false }, { q: "¿El tomate es una fruta?", a: true },
+                    { q: "¿El coral es una planta?", a: false }, { q: "¿Las esponjas son animales?", a: true },
+                    { q: "¿El bambú crece muy rápido?", a: true }, { q: "¿El guepardo es el más rápido?", a: true },
+                    { q: "¿El tiburón tiene huesos?", a: false }, { q: "¿El caballito de mar es pez?", a: true },
+                    { q: "¿El koala es un oso?", a: false }, { q: "¿Las abejas bailan?", a: true },
+
+                    // --- CURIOSIDADES ---
+                    { q: "¿El cerebro siente dolor?", a: false }, { q: "¿Dormimos 1/3 de la vida?", a: true },
+                    { q: "¿El ADN es una espiral?", a: true }, { q: "¿Los pulpos tienen 3 corazones?", a: true },
+                    { q: "¿El chocolate es malo para perros?", a: true }, { q: "¿Las hormigas duermen?", a: true },
+                    { q: "¿Los cocodrilos lloran?", a: true }, { q: "¿El ketchup era medicina?", a: true },
+                    { q: "¿La miel nunca caduca?", a: true }, { q: "¿El agua moja?", a: true },
+
+                    // --- CIENCIA GENERAL ---
+                    { q: "¿El fuego tiene sombra?", a: false }, { q: "¿El aire pesa?", a: true },
+                    { q: "¿El rayo cae dos veces igual?", a: true }, { q: "¿El vidrio es arena?", a: true },
+                    { q: "¿El diamante es carbón?", a: true }, { q: "¿El sonido viaja en el vacío?", a: false },
+                    { q: "¿La luz es más rápida que el sonido?", a: true }, { q: "¿El agua hierve a 100ºC?", a: true },
+                    { q: "¿El hielo flota?", a: true }, { q: "¿El petróleo es infinito?", a: false },
+
+                    // --- EXPANSIÓN (Totalizando ~60+ preguntas parra rotación) ---
+                    { q: "¿Marte es el Planeta Rojo?", a: true }, { q: "¿Júpiter es gaseoso?", a: true },
+                    { q: "¿Plutón es un planeta principal?", a: false }, { q: "¿El Sol es una estrella?", a: true },
+                    { q: "¿La Vía Láctea es una galaxia?", a: true }, { q: "¿Los dinosaurios convivieron con humanos?", a: false },
+                    { q: "¿El T-Rex era herbívoro?", a: false }, { q: "¿Los pájaros vienen de dinosaurios?", a: true },
+                    { q: "¿El mamut está extinto?", a: true }, { q: "¿La Tierra tiene 4.500 millones de años?", a: true },
+                    { q: "¿El Big Bang exploto?", a: true }, { q: "¿Los átomos son invisibles a simple vista?", a: true },
+                    { q: "¿El agua es H2O?", a: true }, { q: "¿El oxígeno es un metal?", a: false },
+                    { q: "¿El oro se oxida?", a: false }, { q: "¿La sal es un mineral?", a: true },
+                    { q: "¿El azúcar viene de una planta?", a: true }, { q: "¿El papel sale de la madera?", a: true },
+                    { q: "¿El plástico crece en árboles?", a: false }, { q: "¿Reciclar ahorra energía?", a: true }
+                ],
+                run: function () {
+                    let difficulty = APP_STATE.level2Unlocked ? 20 : 10; // Level 2 Logic
+                    let deck = [...this.pool].sort(() => 0.5 - Math.random()).slice(0, difficulty);
+                    let idx = 0; let pts = 0; let correctCount = 0;
+
+                    const next = () => {
+                        if (idx >= deck.length) {
+                            let msg = correctCount > (difficulty * 0.8) ? "¡NIVEL EXPERTO DESBLOQUEADO!" : "¡Buen intento!";
+                            if (correctCount > (difficulty * 0.8) && !APP_STATE.level2Unlocked) {
+                                APP_STATE.level2Unlocked = true;
+                                AUDIO.playSFX('sfxWin');
+                            }
+
+                            document.getElementById('gContent').innerHTML = `
+                                <div style='animation:popIn 0.5s'>
+                                    <div style="font-size:4rem; margin-bottom:20px;">🏆</div>
+                                    <h2 style="color:white; font-size:2rem;">${pts} Puntos</h2>
+                                    <p>${msg}</p>
+                                    <button class='g-btn' onclick='closeGame()'>Salir</button>
+                                </div>`;
+                            return;
+                        }
+                        let q = deck[idx];
+                        document.getElementById('gContent').innerHTML = `
+                            <div style="margin-bottom:20px;">
+                                <div style="font-size:1.2rem; color:#64748b; margin-bottom:10px;">PREGUNTA ${idx + 1}/${deck.length} ${APP_STATE.level2Unlocked ? '(DIFÍCIL)' : ''}</div>
+                                <h3 style="font-size:1.8rem; line-height:1.3; min-height:80px; display:flex; align-items:center; justify-content:center;">${q.q}</h3>
+                            </div>
+                            <div id="feedback-area" style="height:40px; margin-bottom:20px; font-weight:bold; font-size:1.5rem;"></div>
+                            <div id="btn-area">
+                                <button class="g-btn true" onclick="GAMES[1].ans(${idx}, true, this)">VERDADERO</button>
+                                <button class="g-btn false" onclick="GAMES[1].ans(${idx}, false, this)">FALSO</button>
+                            </div>
+                        `;
+                    };
+                    this.ans = (i, b, btn) => {
+                        let btns = document.getElementById('btn-area').getElementsByTagName('button');
+                        for (let bt of btns) bt.disabled = true;
+
+                        let correct = (b === deck[i].a);
+                        let feedback = document.getElementById('feedback-area');
+
+                        if (correct) {
+                            pts += 100;
+                            correctCount++;
+                            btn.style.background = "#22c55e";
+                            feedback.innerHTML = "<span style='color:#22c55e'>✅ ¡CORRECTO!</span>";
+                            AUDIO.playSFX('sfxConfirm');
+                        } else {
+                            btn.style.background = "#ef4444";
+                            feedback.innerHTML = "<span style='color:#ef4444'>❌ ¡FALLASTE!</span>";
+                            AUDIO.playSFX('sfxError');
+                        }
+                        setTimeout(() => { idx++; next(); }, 1200);
+                    };
+                    next();
+                }
+            },
+            2: { // HISTORIA (Expanded)
+                title: "⏳ Crono-Detective",
+                qs: [
+                    { q: "¿Julio César usaba internet?", a: false }, { q: "¿Las pirámides son tumbas?", a: true },
+                    { q: "¿Cristóbal Colón era astronauta?", a: false }, { q: "¿Los vikingos llevaban cascos con cuernos?", a: false },
+                    { q: "¿En la Edad Media había castillos?", a: true }, { q: "¿La rueda se inventó en el siglo XX?", a: false },
+                    { q: "¿Los romanos hablaban latín?", a: true }, { q: "¿Cleopatra vivía en Nueva York?", a: false },
+                    { q: "¿El hombre llegó a la Luna en 1969?", a: true }, { q: "¿Los mamuts se cazaban con lanzas?", a: true },
+                    { q: "¿La pólvora se inventó en China?", a: true }, { q: "¿El teléfono lo inventó un romano?", a: false },
+                    { q: "¿Napoleón tenía un avión privado?", a: false }, { q: "¿Los Mayas construyeron pirámides?", a: true }
+                ],
+                run: function () {
+                    let deck = [...this.qs].sort(() => 0.5 - Math.random()); // ALL QUESTIONS
+                    let idx = 0; let hits = 0;
+                    const next = () => {
+                        if (idx >= deck.length) {
+                            let msg = "", color = "";
+                            if (hits < 5) { msg = "🕵️ Cadete: Necesitas estudiar más historia."; color = "#f97316"; }
+                            else if (hits <= 10) { msg = "🎖️ Agente Oficial: ¡Buen trabajo!"; color = "#3b82f6"; }
+                            else { msg = "👑 CRONO-MAESTRO: ¡Eres infalible!"; color = "#a855f7"; AUDIO.playSFX('sfxWin'); }
+
+                            document.getElementById('gContent').innerHTML = `
+                                <div style='animation:popIn 0.5s'>
+                                    <h2 style='color:${color}; font-size:2rem;'>${msg}</h2>
+                                    <p style='font-size:1.5em; font-weight:bold; margin-bottom:20px;'>Aciertos: ${hits}/${deck.length}</p>
+                                    <button class='g-btn' onclick='closeGame()'>Salir</button>
+                                </div>`;
+                            return;
+                        }
+                        let q = deck[idx];
+                        document.getElementById('gContent').innerHTML = `
+                            <div style="margin-bottom:20px;">
+                                 <div style="font-size:1.2rem; color:#64748b; margin-bottom:10px;">PREGUNTA ${idx + 1}/${deck.length}</div>
+                                 <h3 style="font-size:2rem;">${q.q}</h3>
+                            </div>
+                            <div id="feedback-area" style="height:40px; margin-bottom:20px; font-weight:bold; font-size:1.5rem;"></div>
+                            <div>
+                                <button class="g-btn true" onclick="GAMES[2].ans(${idx}, true, this)">SÍ</button>
+                                <button class="g-btn false" onclick="GAMES[2].ans(${idx}, false, this)">NO</button>
+                            </div>
+                        `;
+                    };
+                    this.ans = (i, b, btn) => {
+                        let btns = document.getElementById('gContent').getElementsByTagName('button');
+                        for (let bt of btns) if (bt.classList.contains('g-btn')) bt.disabled = true;
+
+                        let correct = (b === deck[i].a);
+                        let feedback = document.getElementById('feedback-area');
+                        if (correct) {
+                            hits++;
+                            btn.style.background = "#22c55e";
+                            if (feedback) feedback.innerHTML = "<span style='color:#22c55e'>✅ ¡CORRECTO!</span>";
+                            AUDIO.playSFX('sfxConfirm');
+                        } else {
+                            btn.style.background = "#ef4444";
+                            if (feedback) feedback.innerHTML = "<span style='color:#ef4444'>❌ Error Temporal</span>";
+                            AUDIO.playSFX('sfxError');
+                        }
+                        setTimeout(() => { idx++; next(); }, 1000);
+                    };
+                    next();
+                }
+            },
+            3: { // EMPRESA (Renovado)
+                title: "💰 Tiburón de las Finanzas",
+                qs: [
+                    // --- NIVEL 1: Conceptos Básicos ---
+                    { q: "¿'Ingresos' es el dinero que entra en tu hucha?", a: true },
+                    { q: "¿'Gastos' es el dinero que ganas trabajando?", a: false },
+                    { q: "¿Si compras algo por 5€ y lo vendes por 8€, ganas dinero?", a: true },
+                    { q: "¿El 'Ahorro' es dinero que gastas en chuches?", a: false },
+                    { q: "¿Un 'Préstamo' es dinero que te regalan?", a: false },
+                    { q: "¿Para vender limonada necesitas 'Materias Primas' (limones)?", a: true },
+                    { q: "¿La 'Publicidad' sirve para que nadie conozca tu producto?", a: false },
+                    { q: "¿Un 'Cliente' es quien vende el producto?", a: false },
+                    { q: "¿El 'Cambio' es el dinero que te devuelven al pagar?", a: true },
+                    { q: "¿Si hay mucha oferta y poca demanda, los precios bajan?", a: true },
+
+                    // --- NIVEL 2: Matemáticas Financieras (Mental) ---
+                    { q: "Compro a 2€, vendo a 5€. ¿Beneficio = 3€?", a: true },
+                    { q: "Tengo 10€, gasto 4€. ¿Me quedan 5€?", a: false }, // Quedan 6
+                    { q: "Ahorro 2€ cada día. En 5 días tengo 10€.", a: true },
+                    { q: "Una entrada vale 5€. Dos entradas valen 12€.", a: false }, // Valen 10
+                    { q: "Si reparto 20€ entre 4 amigos, tocan a 5€ cada uno.", a: true },
+                    { q: "Pago con 50€ una compra de 45€. ¿Me devuelven 10€?", a: false }, // 5€
+                    { q: "El 50% de 100€ son 50€.", a: true },
+                    { q: "Un descuento del 100% significa que es gratis.", a: true },
+                    { q: "Gano 10€ y gasto 12€. ¿He ahorrado?", a: false },
+                    { q: "3 billetes de 5€ son 15€.", a: true },
+
+                    // --- NIVEL 3: Emprendimiento y Estrategia ---
+                    { q: "¿El 'Marketing' ayuda a vender más?", a: true },
+                    { q: "¿Es bueno escuchar las quejas de los clientes?", a: true },
+                    { q: "¿Un 'Monopolio' es cuando hay muchos vendedores?", a: false },
+                    { q: "¿Los 'Impuestos' ayudan a pagar hospitales y carreteras?", a: true },
+                    { q: "¿Si subo mucho el precio, venderé más seguro?", a: false },
+                    { q: "¿Innovar es copiar lo que hacen los demás?", a: false },
+                    { q: "¿El trabajo en equipo mejora los resultados?", a: true },
+                    { q: "¿Un 'Presupuesto' es una lista de lo que planeas gastar?", a: true },
+                    { q: "¿Invertir significa gastar dinero para ganar más en el futuro?", a: true },
+                    { q: "¿La 'Competencia' son las otras empresas que venden lo mismo?", a: true }
+                ],
+                run: function () {
+                    let deck = [...this.qs].sort(() => 0.5 - Math.random()).slice(0, 15); // Random 15 questions
+                    let idx = 0; let hits = 0;
+                    const next = () => {
+                        if (idx >= deck.length) {
+                            let msg = "", color = "";
+                            if (hits < 10) { msg = "📉 Becario: Revisa tus cuentas."; color = "#f97316"; }
+                            else if (hits <= 20) { msg = "📈 Gerente: ¡Buen balance!"; color = "#3b82f6"; }
+                            else { msg = "💰 TIBURÓN: ¡Dominas el mercado!"; color = "#22c55e"; AUDIO.playSFX('sfxWin'); }
+
+                            document.getElementById('gContent').innerHTML = `
+                                <div style='animation:popIn 0.5s'>
+                                    <h2 style='color:${color}; font-size:2rem;'>${msg}</h2>
+                                    <p style='font-size:1.5em; font-weight:bold; margin-bottom:20px;'>Aciertos: ${hits}/${deck.length}</p>
+                                    <button class='g-btn' onclick='closeGame()'>Salir</button>
+                                </div>`;
+                            return;
+                        }
+                        let q = deck[idx];
+                        document.getElementById('gContent').innerHTML = `
+                            <div style="margin-bottom:20px;">
+                                 <div style="font-size:1.2rem; color:#64748b; margin-bottom:10px;">PREGUNTA ${idx + 1}/${deck.length}</div>
+                                 <h3 style="font-size:2rem;">${q.q}</h3>
+                            </div>
+                            <div id="feedback-area" style="height:40px; margin-bottom:20px; font-weight:bold; font-size:1.5rem;"></div>
+                            <div>
+                                <button class="g-btn true" onclick="GAMES[3].ans(${idx}, true, this)">SÍ</button>
+                                <button class="g-btn false" onclick="GAMES[3].ans(${idx}, false, this)">NO</button>
+                            </div>
+                        `;
+                    };
+                    this.ans = (i, b, btn) => {
+                        let btns = document.getElementById('gContent').getElementsByTagName('button');
+                        for (let bt of btns) if (bt.classList.contains('g-btn')) bt.disabled = true;
+
+                        let correct = (b === deck[i].a);
+                        let feedback = document.getElementById('feedback-area');
+                        if (correct) {
+                            hits++;
+                            btn.style.background = "#22c55e";
+                            if (feedback) feedback.innerHTML = "<span style='color:#22c55e'>✅ ¡Cash!</span>";
+                            AUDIO.playSFX('sfxConfirm');
+                        } else {
+                            btn.style.background = "#ef4444";
+                            if (feedback) feedback.innerHTML = "<span style='color:#ef4444'>❌ Pérdida</span>";
+                            AUDIO.playSFX('sfxError');
+                        }
+                        setTimeout(() => { idx++; next(); }, 1000);
+                    };
+                    next();
+                }
+            },
+            4: { // P2-T1: CRIPTO
+                title: "🔐 Cripto-Decoder",
+                state: { level: 1, score: 0 },
+                run: function () {
+                    this.state.score = 0;
+                    this.cryptoLoop(0);
+                },
+                cryptoLoop: function (turn) {
+                    if (turn >= 5) {
+                        AUDIO.playSFX('sfxWin');
+                        document.getElementById('gContent').innerHTML = `
+                             <div style='animation:popIn 0.5s'>
+                                <h2 style='color:#a855f7; font-size:2rem;'>🏅 ¡AGENTE DE CODIFICACIÓN!</h2>
+                                <p style='font-size:1.5em; font-weight:bold; margin-bottom:20px;'>Puntuación: ${this.state.score}/5</p>
+                                <button class='g-btn' onclick='closeGame()'>Salir</button>
+                             </div>`;
+                        return;
+                    }
+
+                    // Palabras y claves variadas
+                    let dic = ["HOLA", "LUPA", "MAR", "PISTA", "HUELLA", "LADRON", "CIENCIA", "ADN"];
+                    let word = dic[Math.floor(Math.random() * dic.length)];
+                    let key = Math.floor(Math.random() * 3) + 1; // 1, 2 o 3 posiciones
+                    let cipher = "";
+
+                    // Cifrado simple
+                    for (let i = 0; i < word.length; i++) {
+                        let code = word.charCodeAt(i);
+                        // A=65, Z=90
+                        let newCode = code + key;
+                        if (newCode > 90) newCode -= 26;
+                        cipher += String.fromCharCode(newCode);
+                    }
+
+                    document.getElementById('gContent').innerHTML = `
+                        <div style="display:flex; justify-content:space-between; padding:0 20px; color:#d8b4fe;">
+                            <span>PALABRA ${turn + 1}/5</span>
+                            <span>PUNTOS: ${this.state.score}</span>
+                        </div>
+                        <h3>📠 Interceptando Mensaje...</h3>
+                        <div style="background:#000; color:#22c55e; font-family:monospace; font-size:3rem; padding:20px; border:2px solid #333; letter-spacing:8px; margin:20px auto; width:fit-content; border-radius:10px;">
+                            ${cipher}
+                        </div>
+                        <div style="background:#334155; padding:10px; display:inline-block; border-radius:5px; margin-bottom:20px;">
+                            <span style="font-size:1.5rem;">🔑 CLAVE: +${key}</span>
+                        </div>
+                        <br>
+                        <input type="text" id="cInput" autocomplete="off" placeholder="ESCRIBE LA RESPUESTA" 
+                            style="font-size:1.5rem; padding:15px; width:250px; text-transform:uppercase; text-align:center; background:#1e293b; color:white; border:2px solid #555; border-radius:5px;">
+                        <br><br>
+                        <button class="g-btn true" onclick="GAMES[4].checkCryptoAns('${word}', ${turn})">DESENCRIPTAR</button>
+                        <button class="g-btn" onclick="closeGame()">ABORTAR</button>
+                    `;
+                },
+                checkCryptoAns: function (target, turn) {
+                    let val = document.getElementById('cInput').value.toUpperCase().trim();
+                    if (val === target) {
+                        AUDIO.playSFX('sfxConfirm');
+                        this.state.score++;
+                        this.cryptoLoop(turn + 1);
+                    } else {
+                        AUDIO.playSFX('sfxError');
+                        alert(`❌ INCORRECTO. Era: ${target}`);
+                        this.cryptoLoop(turn + 1);
+                    }
+                }
+            },
+            5: { // P2-T2: FORENSE (MASTERMIND)
+                title: "🔬 Caja Fuerte Biométrica",
+                state: { secret: [], attempts: [] },
+                run: function () {
+                    this.initMastermind();
+                },
+                initMastermind: function () {
+                    let colors = ["🔴", "🔵", "🟢", "🟡"];
+                    this.state.secret = [
+                        colors[Math.floor(Math.random() * 4)],
+                        colors[Math.floor(Math.random() * 4)],
+                        colors[Math.floor(Math.random() * 4)]
+                    ];
+                    this.state.attempts = [];
+                    this.renderMastermind();
+                },
+                renderMastermind: function () {
+                    let histHTML = this.state.attempts.map(a => `
+                        <div style="display:flex; justify-content:center; gap:10px; margin-bottom:5px; background:rgba(255,255,255,0.05); padding:5px; border-radius:5px;">
+                            <div style="font-size:1.5rem;">${a.guess.join('')}</div>
+                            <div style="display:flex; align-items:center; gap:5px; font-size:0.9rem;">
+                                ${'⚫'.repeat(a.black)} ${'⚪'.repeat(a.white)}
+                            </div>
+                        </div>
+                    `).join('');
+
+                    document.getElementById('gContent').innerHTML = `
+                        <h3>🔐 Caja Fuerte Biométrica</h3>
+                        <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Adivina la combinación (3 colores).<br>⚫ = Bien y Lugar | ⚪ = Bien pero Lugar Mal</p>
+                        
+                        <div style="height:180px; overflow-y:auto; margin-bottom:20px; border:1px solid #444; padding:10px; background:#0f172a;">
+                            ${histHTML || '<div style="color:#666; padding:20px;">Historial de intentos...</div>'}
+                        </div>
+
+                        <div style="display:flex; justify-content:center; gap:10px; margin-bottom:20px;">
+                            <select id="s1" style="font-size:1.5rem; padding:5px; border-radius:5px;"><option value="🔴">🔴</option><option value="🔵">🔵</option><option value="🟢">🟢</option><option value="🟡">🟡</option></select>
+                            <select id="s2" style="font-size:1.5rem; padding:5px; border-radius:5px;"><option value="🔴">🔴</option><option value="🔵">🔵</option><option value="🟢">🟢</option><option value="🟡">🟡</option></select>
+                            <select id="s3" style="font-size:1.5rem; padding:5px; border-radius:5px;"><option value="🔴">🔴</option><option value="🔵">🔵</option><option value="🟢">🟢</option><option value="🟡">🟡</option></select>
+                        </div>
+                        <button class="g-btn true" onclick="GAMES[5].checkMastermind()">PROBAR CÓDIGO</button>
+                        <button class="g-btn" onclick="closeGame()">VOLVER</button>
+                    `;
+                },
+                checkMastermind: function () {
+                    let g = [
+                        document.getElementById('s1').value,
+                        document.getElementById('s2').value,
+                        document.getElementById('s3').value
+                    ];
+
+                    let secretCopy = [...this.state.secret];
+                    let guessCopy = [...g];
+                    let black = 0; let white = 0;
+
+                    for (let i = 0; i < 3; i++) {
+                        if (guessCopy[i] === secretCopy[i]) {
+                            black++;
+                            guessCopy[i] = null;
+                            secretCopy[i] = null;
+                        }
+                    }
+                    for (let i = 0; i < 3; i++) {
+                        if (guessCopy[i] !== null) {
+                            let idx = secretCopy.indexOf(guessCopy[i]);
+                            if (idx !== -1) {
+                                white++;
+                                secretCopy[idx] = null;
+                            }
+                        }
+                    }
+
+                    this.state.attempts.push({ guess: g, black, white });
+
+                    if (black === 3) {
+                        AUDIO.playSFX('sfxWin');
+                        document.getElementById('gContent').innerHTML = `
+                            <div style="animation:popIn 0.5s">
+                                <h1>🔓 ¡ABIERTA!</h1>
+                                <p style="font-size:1.2rem;">Has hackeado el sistema.</p>
+                                <div style="font-size:3rem; margin:20px;">${g.join(' ')}</div>
+                                <button class="g-btn" onclick="closeGame()">Volver</button>
+                            </div>
+                        `;
+                    } else {
+                        AUDIO.playSFX('sfxConfirm');
+                        this.renderMastermind();
+                    }
+                }
+            },
+            6: { // P2-T3: ESPIAS (MEMORY PATH)
+                title: "🕵️ Infiltración Nocturna",
+                state: { level: 1, path: [], userStep: 0, gridSize: 0 },
+                run: function () {
+                    this.state.level = 1;
+                    this.levelStart();
+                },
+                levelStart: function () {
+                    let size = 3 + Math.floor(this.state.level / 2);
+                    if (size > 5) size = 5;
+                    this.state.gridSize = size;
+
+                    let path = [];
+                    let cR = 0, cC = 0;
+                    path.push(`${cR},${cC}`);
+
+                    let len = 4 + this.state.level;
+                    for (let i = 0; i < len; i++) {
+                        if (Math.random() > 0.5 && cR < size - 1) cR++;
+                        else if (cC < size - 1) cC++;
+                        else if (cR < size - 1) cR++;
+
+                        let coord = `${cR},${cC}`;
+                        if (path[path.length - 1] !== coord) path.push(coord);
+                    }
+                    this.state.path = path;
+                    this.state.userStep = 0;
+
+                    this.renderGrid(true);
+
+                    setTimeout(() => {
+                        this.renderGrid(false);
+                    }, 2000 + (this.state.level * 200));
+                },
+                renderGrid: function (showSolution) {
+                    let sz = this.state.gridSize;
+                    let html = `<h3 style="margin-bottom:5px;">NIVEL ${this.state.level}</h3>`;
+
+                    if (showSolution) html += `<p style="color:#22c55e; font-weight:bold;">¡MEMORIZA LA RUTA!</p>`;
+                    else html += `<p style="color:#ccc;">Repite el camino...</p>`;
+
+                    html += `<div style="display:grid; grid-template-columns:repeat(${sz}, 60px); gap:5px; justify-content:center; margin:20px auto;">`;
+
+                    for (let r = 0; r < sz; r++) {
+                        for (let c = 0; c < sz; c++) {
+                            let coord = `${r},${c}`;
+                            let isPath = this.state.path.includes(coord);
+                            let bg = "#1e293b";
+                            let icon = "";
+
+                            if (showSolution && isPath) bg = "#22c55e";
+                            if (r === 0 && c === 0) icon = "🚩";
+
+                            let clickFn = showSolution ? "" : `onclick="GAMES[6].clickCell(${r},${c})"`;
+
+                            html += `<div id="cell-${coord}" ${clickFn} 
+                                style="width:60px; height:60px; background:${bg}; border:1px solid #475569; display:flex; align-items:center; justify-content:center; font-size:1.5rem; cursor:pointer; border-radius:5px;">${icon}</div>`;
+                        }
+                    }
+                    html += `</div>`;
+
+                    document.getElementById('gContent').innerHTML = html;
+                },
+                clickCell: function (r, c) {
+                    let coord = `${r},${c}`;
+                    let correctStep = this.state.path[this.state.userStep];
+                    let cell = document.getElementById(`cell-${coord}`);
+
+                    if (coord === correctStep) {
+                        cell.style.background = "#22c55e";
+                        cell.innerText = "👣";
+                        AUDIO.playSFX('sfxConfirm');
+                        this.state.userStep++;
+
+                        if (this.state.userStep >= this.state.path.length) {
+                            setTimeout(() => {
+                                this.state.level++;
+                                this.levelStart();
+                            }, 500);
+                        }
+                    } else {
+                        cell.style.background = "#ef4444";
+                        cell.innerText = "🚨";
+                        AUDIO.playSFX('sfxError');
+                        setTimeout(() => {
+                            alert("¡ALARMA! Te han atrapado.");
+                            closeGame();
+                        }, 200);
+                    }
+                }
+            },
+            7: { // P3-T1: ARQUITECTURA (AHORCADO PROGRESIVO)
+                title: "🏗️ El Plano Secreto",
+                state: { level: 0, word: "", hidden: [], errors: 0, maxErrors: 6, levels: [], guessed: [] },
+                run: function () {
+                    // Define progressive difficulty levels
+                    this.state.levels = [
+                        ["IGLU", "DOMO", "ARCO"],        // L1: Cortas (3-4 letras)
+                        ["ADOBE", "MINKA", "MURO"],      // L2: Medias (5 letras)
+                        ["PAGODA", "TRULLO", "PLANOS"],  // L3: Medias+ (6 letras)
+                        ["COLUMNA", "CIMIENTOS", "PUENTE"], // L4: Largas
+                        ["RASCACIELOS", "ESTRUCTURA", "PALAFITO"] // L5: Muy largas
+                    ];
+                    this.state.level = 0;
+                    this.startLevel();
+                },
+                startLevel: function () {
+                    let words = this.state.levels[this.state.level];
+                    this.state.word = words[Math.floor(Math.random() * words.length)];
+                    this.state.hidden = Array(this.state.word.length).fill("_");
+                    this.state.errors = 0;
+                    this.state.guessed = [];
+                    this.renderHangman();
+                },
+                nextLevel: function () {
+                    this.state.level++;
+                    if (this.state.level >= this.state.levels.length) {
+                        this.state.level = 0;
+                        alert("¡Increíble! Has completado todos los niveles de Arquitectura.");
+                        closeGame();
+                        return;
+                    }
+                    this.startLevel();
+                },
+                renderHangman: function (msg = "") {
+                    let w = this.state.hidden.join(" ");
+                    let draws = [
+                        "",
+                        "BASE",
+                        "BASE + PILAR",
+                        "BASE + PILAR + VIGA",
+                        "ESTRUCTURA",
+                        "GRÚA PELIGROSA",
+                        "💥 DEMOLICIÓN"
+                    ];
+                    let status = draws[this.state.errors];
+
+                    document.getElementById('gContent').innerHTML = `
+                        <div style="display:flex; justify-content:space-between; color:#94a3b8; font-size:0.9em; margin-bottom:10px;">
+                            <span>Nivel ${this.state.level + 1}/${this.state.levels.length}</span>
+                            <span>Intentos: ${6 - this.state.errors}</span>
+                        </div>
+                        <h2>${w}</h2>
+                        <div style="font-family:monospace; margin:20px; height:80px; display:flex; align-items:center; justify-content:center; background:#0f172a; border-radius:10px;">
+                            <span style="color:${this.state.errors >= 5 ? '#ef4444' : '#fbbf24'}; font-size:1.5em;">🏗️ OBRA: ${status}</span>
+                        </div>
+                        <p style="color:#ef4444; height:30px; font-weight:bold;">${msg}</p>
+                        <div id="kbd" style="display:flex; flex-wrap:wrap; justify-content:center; gap:5px; max-width:600px; margin:0 auto;">
+                            <!-- Keys generated -->
+                        </div>
+                        <button class="g-btn" style="margin-top:30px;" onclick="closeGame()">Abandonar Obra</button>
+                    `;
+
+                    if (msg.includes("COMPLETADO")) return;
+
+                    let abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+                    let kbd = document.getElementById('kbd');
+
+                    for (let char of abc) {
+                        let btn = document.createElement('button');
+                        btn.innerText = char;
+                        btn.style.width = "40px";
+                        btn.style.height = "40px";
+                        btn.style.borderRadius = "5px";
+                        btn.style.border = "none";
+                        btn.style.background = "#334155";
+                        btn.style.color = "white";
+
+                        if (this.state.guessed.includes(char)) {
+                            btn.disabled = true;
+                            btn.style.opacity = 0.5;
+                            if (this.state.word.includes(char)) btn.style.background = "#22c55e";
+                            else btn.style.background = "#ef4444";
+                        }
+
+                        btn.style.cursor = "pointer";
+                        btn.onclick = () => this.guess(char, btn);
+                        kbd.appendChild(btn);
+                    }
+                },
+                guess: function (char, btn) {
+                    if (!this.state.guessed) this.state.guessed = [];
+                    this.state.guessed.push(char);
+
+                    btn.disabled = true;
+                    btn.style.opacity = 0.5;
+
+                    if (this.state.word.includes(char)) {
+                        btn.style.background = "#22c55e";
+                        for (let i = 0; i < this.state.word.length; i++) {
+                            if (this.state.word[i] === char) this.state.hidden[i] = char;
+                        }
+                        if (!this.state.hidden.includes("_")) {
+                            AUDIO.playSFX('sfxWin');
+                            // WIN SCREEN OVERLAY
+                            document.getElementById('gContent').innerHTML += `
+                                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:50; border-radius:15px;">
+                                    <h1 style="color:#22c55e; font-size:2.5em; margin-bottom:10px;">🎉 ¡CONSTRUIDO!</h1>
+                                    <p style="color:white; font-size:1.2em; margin-bottom:30px;">Palabra: <b>${this.state.word}</b></p>
+                                    <button class="g-btn true" style="font-size:1.2em; padding:15px 30px; background:#22c55e; color:white;" onclick="GAMES[7].nextLevel()">▶️ SIGUIENTE NIVEL</button>
+                                </div>
+                            `;
+                        } else {
+                            AUDIO.playSFX('sfxConfirm');
+                            this.renderHangman();
+                        }
+                    } else {
+                        btn.style.background = "#ef4444";
+                        this.state.errors++;
+                        AUDIO.playSFX('sfxError');
+                        if (this.state.errors >= 6) {
+                            // LOSE SCREEN
+                            document.getElementById('kbd').innerHTML = "";
+                            this.renderHangman("💥 ¡DERRUMBE! La palabra era: " + this.state.word);
+                            document.getElementById('gContent').innerHTML += `
+                                <div style="margin-top:20px;">
+                                    <button class="g-btn" onclick="GAMES[7].startLevel()">🔄 REINTENTAR NIVEL</button>
+                                </div>
+                            `;
+                        } else {
+                            this.renderHangman("⚠️ ¡Cuidado!");
+                        }
+                    }
+                }
+            },
+            8: { // P3-T2: PERIODISMO (RULETA DE LA VERDAD)
+                title: "🎰 La Ruleta de la Verdad",
+                state: { spinning: false, topic: null, phrase: null, hidden: [], guessed: [], errors: 0 },
+                data: {
+                    topics: [
+                        { id: 'sport', name: '⚽ Deportes', color: '#ef4444' }, // Red
+                        { id: 'cult', name: '🎭 Cultura', color: '#3b82f6' },  // Blue
+                        { id: 'sci', name: '🔬 Ciencia', color: '#22c55e' },   // Green
+                        { id: 'soc', name: '🗞️ Sociedad', color: '#f59e0b' }   // Orange
+                    ],
+                    phrases: {
+                        'sport': [
+                            { t: "MESSI FICHA POR EL ALBACETE", e: "¡BULO! Siempre contrasta con fuentes oficiales." },
+                            { t: "EL BALON SERA CUADRADO EN 2030", e: "¡FAKE! Es una broma viral que muchos creyeron." }
+                        ],
+                        'cult': [
+                            { t: "DESCUBREN UNA PIRAMIDE EN MADRID", e: "¡FALSO! Era una campaña de publicidad de una película." },
+                            { t: "MOZART ERA EXTRATERRESTRE", e: "¡MITO! Era un genio, pero 100% humano." }
+                        ],
+                        'sci': [
+                            { t: "LAS VACUNAS TIENEN MICROCHIPS", e: "¡BULO PELIGROSO! Científicamente imposible y falso." },
+                            { t: "EL HOMBRE NUNCA LLEGO A LA LUNA", e: "¡FALSO! Hay miles de pruebas, rocas y espejos allí." }
+                        ],
+                        'soc': [
+                            { t: "REGALAN PERROS DE RAZA EN FACEBOOK", e: "¡TIMO! Buscan tus datos o que pagues el envío." },
+                            { t: "WHATSAPP PASARA A SER DE PAGO", e: "¡BULO! Es una cadena antigua que vuelve cada año." }
+                        ]
+                    }
+                },
+                run: function () {
+                    this.state.spinning = false;
+                    this.state.guessed = [];
+                    this.state.errors = 0;
+                    document.getElementById('gContent').innerHTML = `
+                         <div style="text-align:center;">
+                             <div style="position:relative; width:300px; height:300px; margin:0 auto; border-radius:50%; border:8px solid #cbd5e1; overflow:hidden; transition:transform 4s cubic-bezier(0.1, 0, 0.2, 1); box-shadow:0 10px 25px rgba(0,0,0,0.5);" id="wheel">
+                                <div style="position:absolute; top:0; left:0; width:50%; height:50%; background:#ef4444; display:flex; justify-content:center; align-items:center;"><span style="transform:rotate(-45deg) translate(-20px,20px); font-weight:bold; color:white; font-size:1.5em;">⚽</span></div>
+                                <div style="position:absolute; top:0; right:0; width:50%; height:50%; background:#3b82f6; display:flex; justify-content:center; align-items:center;"><span style="transform:rotate(45deg) translate(20px,20px); font-weight:bold; color:white; font-size:1.5em;">🎭</span></div>
+                                <div style="position:absolute; bottom:0; left:0; width:50%; height:50%; background:#f59e0b; display:flex; justify-content:center; align-items:center;"><span style="transform:rotate(-135deg) translate(-20px,20px); font-weight:bold; color:white; font-size:1.5em;">🗞️</span></div>
+                                <div style="position:absolute; bottom:0; right:0; width:50%; height:50%; background:#22c55e; display:flex; justify-content:center; align-items:center;"><span style="transform:rotate(135deg) translate(20px,20px); font-weight:bold; color:white; font-size:1.5em;">🔬</span></div>
+                                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:50px; height:50px; background:white; border-radius:50%; z-index:10; border:4px solid #cbd5e1;"></div>
+                             </div>
+                             <div style="position:absolute; top:110px; left:50%; transform:translate(-50%, 0); font-size:50px; z-index:20; filter:drop-shadow(0 4px 2px rgba(0,0,0,0.5));">🔻</div>
+                             
+                             <div id="w-msg" style="min-height:60px; margin-top:30px;">
+                                <h3 style="color:#e2e8f0; font-size:1.5em;">¡Gira para destapar un Bulo!</h3>
+                             </div>
+                             
+                             <button id="btnSpin" class="g-btn true" onclick="GAMES[8].spin()" style="font-size:1.5em; padding:15px 40px;">🔄 GIRAR</button>
+                             <button class="g-btn" onclick="closeGame()">Salir</button>
+                         </div>
+                    `;
+                },
+                spin: function () {
+                    if (this.state.spinning) return;
+                    this.state.spinning = true;
+                    document.getElementById('btnSpin').disabled = true;
+
+                    // Random section: 0:Red(Sport), 1:Blue(Cult), 2:Orange(Soc), 3:Green(Sci)
+                    // Angles: Red(270-360), Blue(0-90), Green(90-180), Orange(180-270)
+                    // Wait. Visual layout:
+                    // TL: Red, TR: Blue, BL: Orange, BR: Green.
+                    // Pointer is at Top (12 o'clock).
+                    // To land on Red (TL): Rotate so TL is at Top. Need +45 deg to center it? No.
+                    // Let's simplify: Rotate huge amount + random quadrant.
+
+                    let rounds = 5 + Math.floor(Math.random() * 5);
+                    let targetSection = Math.floor(Math.random() * 4); // 0..3
+                    // Sections visual map relative to top pointer after rotation:
+                    // 0 (TL Red) -> needs 315 deg to be at top.
+                    // 1 (TR Blue) -> 45 deg.
+                    // 2 (BL Orange) -> 225 deg.
+                    // 3 (BR Green) -> 135 deg.
+
+                    // Actually, simpler logic:
+                    // 0: Blue (TR) -> lands if rotation % 360 is around 315 (pointer hits TR).
+
+                    // Let's force it:
+                    // We want visual stop at:
+                    // 0 (Red TL): 135 deg rotation puts TR at bottom, BL at right... logic is hard.
+                    // Let's pre-define winning angles.
+                    // Pointer is TOP.
+                    // Red is TL (270-360). Center is 315. Target rotation: -315 or +45?
+                    // If we rotate +45, TR (0-90) moves to (45-135). Top (0) is inside Red? No.
+
+                    // Mapped Angles to STOP at Top:
+                    // Red (Top-Left): Stop at 135deg? No.
+                    // Let's just create a map.
+                    let mapping = [
+                        { id: 'sport', deg: 45 + 360 * rounds, name: '⚽ Deportes' }, // Red (TL) -> +45 to Top
+                        { id: 'cult', deg: 315 + 360 * rounds, name: '🎭 Cultura' },  // Blue (TR) -> -45 to Top
+                        { id: 'soc', deg: 135 + 360 * rounds, name: '🗞️ Sociedad' },  // Orange (BL) -> +135 to Top
+                        { id: 'sci', deg: 225 + 360 * rounds, name: '🔬 Ciencia' }    // Green (BR) -> +225 to Top
+                    ];
+
+                    let sel = mapping[Math.floor(Math.random() * mapping.length)];
+                    this.state.topic = sel;
+
+                    let wheel = document.getElementById('wheel');
+                    wheel.style.transform = `rotate(${sel.deg}deg)`;
+
+                    setTimeout(() => {
+                        document.getElementById('w-msg').innerHTML = `<h3 style="color:#22c55e; animation:popIn 0.5s;">¡Tema: ${sel.name}!</h3>`;
+                        setTimeout(() => this.initPuzzle(), 1500);
+                    }, 4000);
+                },
+                initPuzzle: function () {
+                    let tId = this.state.topic.id;
+                    let list = this.data.phrases[tId];
+                    let p = list[Math.floor(Math.random() * list.length)];
+                    this.state.phrase = p;
+                    this.state.hidden = p.t.split('').map(c => (c === ' ' ? ' ' : '_'));
+
+                    this.renderBoard();
+                },
+                renderBoard: function () {
+                    let html = `
+                        <div style="background:#0f172a; border-radius:10px; padding:20px; max-width:600px; margin:0 auto; box-shadow:0 0 50px rgba(0,0,0,0.5);">
+                            <div style="margin-bottom:20px;">
+                                <span style="background:${this.state.topic.color || '#666'}; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">${this.state.topic.name}</span>
+                            </div>
+                            
+                            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-bottom:30px; font-family:'Courier New', monospace;">
+                    `;
+
+                    // Group by words to prevent bad wrapping
+                    let words = [];
+                    let currentWord = [];
+                    this.state.hidden.forEach(char => {
+                        if (char === ' ') {
+                            if (currentWord.length > 0) words.push(currentWord);
+                            currentWord = [];
+                        } else {
+                            currentWord.push(char);
+                        }
+                    });
+                    if (currentWord.length > 0) words.push(currentWord);
+
+                    words.forEach(word => {
+                        html += `<div style="display:flex; gap:2px;">`; // Word container
+                        word.forEach(char => {
+                            let bg = char === '_' ? '#334155' : 'white';
+                            let col = char === '_' ? 'transparent' : 'black';
+                            let border = '1px solid #94a3b8';
+                            html += `<div style="width:35px; height:45px; background:${bg}; color:${col}; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:bold; border:${border}; box-shadow:${char !== '_' ? '0 2px 0 #000' : 'none'};">${char}</div>`;
+                        });
+                        html += `</div>`;
+                    });
+
+                    html += `</div>
+                            <!-- Keyboard -->
+                            <div id="kbd" style="display:flex; flex-wrap:wrap; justify-content:center; gap:5px;">`;
+
+                    let alpha = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+                    for (let char of alpha) {
+                        let disabled = this.state.guessed.includes(char) ? 'disabled style="opacity:0.3; transform:scale(0.9);"' : '';
+                        let color = this.state.guessed.includes(char) ? (this.state.phrase.t.includes(char) ? '#22c55e' : '#ef4444') : '#1e293b';
+                        html += `<button ${disabled} onclick="GAMES[8].guess('${char}')" style="width:40px; height:40px; border-radius:5px; border:none; background:${color}; color:white; font-weight:bold; cursor:pointer; box-shadow:0 3px 0 #0f172a;">${char}</button>`;
+                    }
+
+                    html += `</div>
+                             <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                                <div style="color:#94a3b8; font-size:0.9em;">Errores: ${this.state.errors}/5</div>
+                                <button class="g-btn" style="background:#f59e0b; padding:10px 20px; font-size:0.9em;" onclick="GAMES[8].attemptSolve()">⚡ RESOLVER</button>
+                             </div>
+                        </div>`;
+
+                    document.getElementById('gContent').innerHTML = html;
+                },
+                attemptSolve: function () {
+                    let input = prompt("Introduce el titular completo (da igual mayúsculas/minúsculas):");
+                    if (!input) return;
+
+                    // Clean inputs
+                    let guess = input.toUpperCase().trim().replace(/\s+/g, ' ');
+                    let answer = this.state.phrase.t.trim().replace(/\s+/g, ' ');
+
+                    if (guess === answer) {
+                        this.state.hidden = answer.split('');
+                        this.renderBoard();
+                        setTimeout(() => this.win(), 500);
+                    } else {
+                        AUDIO.playSFX('sfxError');
+                        this.state.errors += 2; // Solving wrong is costly
+                        alert("❌ ¡Incorrecto! Has cometido 2 errores.");
+                        if (this.state.errors >= 5) {
+                            this.renderBoard();
+                            setTimeout(() => {
+                                alert("💥 Se acabó el tiempo. ¡La noticia falsa se ha viralizado!");
+                                this.run();
+                            }, 500);
+                        } else {
+                            this.renderBoard();
+                        }
+                    }
+                },
+                guess: function (char) {
+                    if (this.state.guessed.includes(char)) return;
+                    this.state.guessed.push(char);
+
+                    let p = this.state.phrase.t;
+                    if (p.includes(char)) {
+                        AUDIO.playSFX('sfxConfirm');
+                        // Reveal
+                        for (let i = 0; i < p.length; i++) {
+                            if (p[i] === char) this.state.hidden[i] = char;
+                        }
+                        if (!this.state.hidden.includes('_')) {
+                            this.renderBoard(); // Show full word
+                            setTimeout(() => this.win(), 500);
+                            return;
+                        }
+                    } else {
+                        AUDIO.playSFX('sfxError');
+                        this.state.errors++;
+                        if (this.state.errors >= 5) {
+                            this.renderBoard();
+                            setTimeout(() => {
+                                alert("💥 Se acabó el tiempo. ¡La noticia falsa se ha viralizado!");
+                                this.run(); // Restart
+                            }, 500);
+                            return;
+                        }
+                    }
+                    this.renderBoard();
+                },
+                win: function () {
+                    AUDIO.playSFX('sfxWin');
+                    document.getElementById('gContent').innerHTML += `
+                        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:100; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
+                            <h1 style="color:#ef4444; font-size:3em; margin-bottom:10px;">¡BULO DETECTADO!</h1>
+                            <div style="background:white; color:black; padding:20px; border-radius:10px; max-width:500px; transform:rotate(-2deg); box-shadow:0 0 20px rgba(255,255,255,0.2);">
+                                <h2 style="font-family:'Courier New'; border-bottom:2px solid black; padding-bottom:10px; margin-bottom:10px;">${this.state.phrase.t}</h2>
+                                <p style="font-size:1.2em; color:#333;">${this.state.phrase.e}</p>
+                            </div>
+                            <button class="g-btn true" style="margin-top:30px; font-size:1.2em;" onclick="GAMES[8].run()">🔄 JUGAR OTRA VEZ</button>
+                            <button class="g-btn" style="margin-top:10px;" onclick="closeGame()">Salir</button>
+                        </div>
+                    `;
+                }
+            },
+            9: { // P3-T3: ECO-ENERGÍA (CIRCUITO)
+                title: "⚡ Conecta la Energía",
+                state: { level: 0, grid: [], size: 3, source: 0, target: 8, moves: 0 },
+                levels: [
+                    {
+                        name: "Nivel 1: El Enchufe", size: 3, src: "🔌", tgt: "💡", sIdx: 0, tIdx: 8,
+                        layout: ["S", "━", "┓", "┃", "┗", "┏", "┛", "━", "T"] // 3x3
+                    },
+                    {
+                        name: "Nivel 2: Energía Solar", size: 4, src: "☀️", tgt: "🏠", sIdx: 0, tIdx: 15,
+                        // Path: Solar Snake (ZigZag: R->D->L->D->R->T) coverage of 4x4
+                        layout: [
+                            "S", "━", "━", "┓",
+                            "┏", "━", "━", "┛",
+                            "┗", "━", "━", "┓",
+                            "┏", "━", "━", "T"
+                        ] // 4x4
+                    },
+                    {
+                        name: "Nivel 3: Parque Eólico", size: 5, src: "💨", tgt: "🏭", sIdx: 0, tIdx: 24,
+                        // Path: Snake S -> Right -> Down -> Left -> Down -> Right -> T
+                        layout: [
+                            "S", "━", "┓", "┏", "┓",
+                            "┏", "┛", "┃", "┃", "┃",
+                            "┃", "┏", "┛", "┣", "┃",
+                            "┣", "┛", "┏", "━", "┛",
+                            "┗", "━", "┛", "━", "T"
+                        ]
+                    },
+                    {
+                        name: "Nivel 4: Hidroeléctrica", size: 6, src: "💧", tgt: "🏙️", sIdx: 0, tIdx: 35,
+                        // Path: Big Detour. S -> Right Edge -> Down -> Left -> Down -> T
+                        layout: [
+                            "S", "━", "━", "━", "┓", "┏",
+                            "┏", "┳", "━", "┓", "┃", "┃",
+                            "┃", "┗", "┏", "┛", "┃", "┃",
+                            "┣", "━", "┛", "┏", "┛", "┃",
+                            "┃", "┏", "━", "┛", "┏", "┛",
+                            "┗", "━", "━", "━", "┛", "T"
+                        ]
+                    },
+                    {
+                        name: "Nivel 5: La Red Global", size: 6, src: "🌍", tgt: "🚀", sIdx: 2, tIdx: 33,
+                        // Source Top-Middle, Target Bottom-Middle.
+                        // Path: Spiral Out and In. 
+                        layout: [
+                            "┏", "┓", "S", "┏", "┓", "┏",
+                            "┃", "┗", "━", "┛", "┃", "┃",
+                            "┣", "━", "┓", "┏", "┛", "┃",
+                            "┃", "┏", "┛", "┗", "┓", "┃",
+                            "┃", "┗", "━", "━", "┛", "┃",
+                            "┗", "━", "━", "T", "━", "┛"
+                        ]
+                    }
+                ],
+                run: function () {
+                    this.state.level = 0;
+                    this.startLevel();
+                },
+                startLevel: function () {
+                    let lvl = this.levels[this.state.level];
+                    this.state.size = lvl.size;
+                    this.state.grid = [];
+
+                    // Init Grid with random rotations
+                    for (let i = 0; i < lvl.layout.length; i++) {
+                        let type = lvl.layout[i];
+                        let r = 0;
+                        if (type !== "S" && type !== "T") {
+                            // User asked for hard mode
+                            r = Math.floor(Math.random() * 4) * 90;
+                        }
+                        this.state.grid.push({ type: type, r: r, powered: false });
+                    }
+
+                    this.render();
+                },
+                render: function () {
+                    let lvl = this.levels[this.state.level];
+                    let sz = this.state.size;
+
+                    // Dynamic tile size based on grid size to fit container
+                    // Base 60px for 3x3. max width ~400px.
+                    // 6x6 -> 400/6 ~ 66px. 
+                    // Let's use 50px for larger grids.
+                    let tileSize = sz > 4 ? 50 : 60;
+
+                    document.getElementById('gContent').innerHTML = `
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#22c55e;">
+                            <span>${lvl.name}</span>
+                            <span>Nivel ${this.state.level + 1}/5</span>
+                        </div>
+                        <div id="c-grid" style="display:grid; grid-template-columns:repeat(${sz}, ${tileSize}px); gap:2px; justify-content:center; margin:0 auto; background:#0f172a; padding:10px; border-radius:10px;">
+                           <!-- Injected -->
+                        </div>
+                        <p style="color:#64748b; font-size:0.9em; margin-top:20px;">Gira las piezas para llevar la energía del ${lvl.src} al ${lvl.tgt}</p>
+                        <button class="g-btn true" onclick="GAMES[9].checkFlow()">¡CONECTAR!</button>
+                        <button class="g-btn" onclick="closeGame()">Salir</button>
+                    `;
+
+                    let g = document.getElementById('c-grid');
+                    for (let i = 0; i < this.state.grid.length; i++) {
+                        let tile = this.state.grid[i];
+                        let div = document.createElement('div');
+                        let content = tile.type;
+
+                        // Visual mapping
+                        if (tile.type === 'S') content = lvl.src;
+                        else if (tile.type === 'T') content = lvl.tgt;
+                        else if (tile.type === '━') content = '━';
+                        else if (tile.type === '┃') content = '┃';
+
+                        let rotDisplay = tile.type === 'S' || tile.type === 'T' ? 0 : tile.r;
+                        let color = tile.powered ? "#22c55e" : "#334155";
+                        if (tile.type === 'S') color = "#f59e0b";
+                        if (tile.type === 'T' && tile.powered) color = "#eab308";
+
+                        div.style = `
+                            width:${tileSize}px; height:${tileSize}px; 
+                            background:${color}; 
+                            border:1px solid #475569; 
+                            display:flex; align-items:center; justify-content:center; 
+                            font-size:${tileSize * 0.5}px; cursor:pointer; 
+                            transition: transform 0.3s, background 0.3s;
+                            transform: rotate(${rotDisplay}deg);
+                            user-select: none;
+                        `;
+                        div.innerText = content;
+
+                        if (tile.type !== 'S' && tile.type !== 'T') {
+                            div.onclick = () => {
+                                tile.r = (tile.r + 90) % 360;
+                                this.render();
+                            };
+                        }
+                        g.appendChild(div);
+                    }
+                },
+                // FLOW LOGIC
+                checkFlow: function () {
+                    let lvl = this.levels[this.state.level];
+                    let sz = this.state.size;
+                    let grid = this.state.grid;
+
+                    // Reset powered state
+                    grid.forEach(t => t.powered = false);
+
+                    // BFS with Path Reconstruction
+                    let queue = [lvl.sIdx];
+                    let cameFrom = {}; // Map child -> parent to reconstruct path
+                    // Mark start as powered initially for viz, but true path re-marked on win
+                    grid[lvl.sIdx].powered = true;
+
+                    let reachedTarget = false;
+
+                    const getExits = (idx) => {
+                        let t = grid[idx];
+                        let r = t.r;
+                        let type = t.type;
+                        if (type === 'S' || type === 'T') return [0, 1, 2, 3];
+
+                        let base = [];
+                        if (type === '━') base = [1, 3];
+                        if (type === '┃') base = [0, 2];
+
+                        if (type === '┏') base = [1, 2];
+                        if (type === '┓') base = [2, 3];
+                        if (type === '┗') base = [0, 1];
+                        if (type === '┛') base = [0, 3];
+                        if (type === '┣') base = [0, 1, 2];
+                        if (type === '┫') base = [0, 2, 3];
+                        if (type === '┳') base = [1, 2, 3];
+                        if (type === '┻') base = [0, 1, 3];
+
+                        let shifts = r / 90;
+                        return base.map(d => (d + shifts) % 4);
+                    };
+
+                    while (queue.length > 0) {
+                        let curr = queue.shift();
+                        if (curr === lvl.tIdx) reachedTarget = true;
+
+                        let exits = getExits(curr);
+                        let neighbors = [
+                            { idx: curr - sz, dir: 0, opp: 2 }, // Up
+                            { idx: curr + 1, dir: 1, opp: 3 },  // Right
+                            { idx: curr + sz, dir: 2, opp: 0 }, // Down
+                            { idx: curr - 1, dir: 3, opp: 1 }   // Left
+                        ];
+
+                        for (let n of neighbors) {
+                            if (n.idx < 0 || n.idx >= grid.length) continue;
+                            if (n.dir === 1 && (curr % sz === sz - 1)) continue;
+                            if (n.dir === 3 && (curr % sz === 0)) continue;
+
+                            // Check connection
+                            if (exits.includes(n.dir)) {
+                                let nExits = getExits(n.idx);
+                                if (nExits.includes(n.opp)) {
+                                    if (!grid[n.idx].powered) { // If not visited
+                                        grid[n.idx].powered = true; // Mark visited for BFS
+                                        cameFrom[n.idx] = curr;     // Store path
+                                        queue.push(n.idx);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // If Win: Clear dead branches and highlight ONLY the path
+                    if (reachedTarget) {
+                        grid.forEach(t => t.powered = false); // Reset all
+                        let backtrack = lvl.tIdx;
+                        while (backtrack !== undefined) {
+                            grid[backtrack].powered = true;
+                            if (backtrack === lvl.sIdx) break; // Reached source
+                            backtrack = cameFrom[backtrack];
+                        }
+                        // Explicitly ensure source is lit just in case logic missed it
+                        grid[lvl.sIdx].powered = true;
+                    }
+
+                    this.render();
+
+                    if (reachedTarget) {
+                        AUDIO.playSFX('sfxWin');
+                        setTimeout(() => {
+                            if (this.state.level < 4) {
+                                let msgs = [
+                                    "¡Buen trabajo! Ampliando red...",
+                                    "¡Energía Solar conectada!",
+                                    "¡Viento aprovechado!",
+                                    "¡Generadores Hidráulicos activos!"
+                                ];
+                                alert(msgs[this.state.level]);
+                                this.state.level++;
+                                this.startLevel();
+                            } else {
+                                alert("🏆 ¡MISIÓN CUMPLIDA! La Aldea Global está 100% conectada y sostenible.");
+                                closeGame();
+                            }
+                        }, 500);
+                    } else {
+                        AUDIO.playSFX('sfxError');
+                    }
+                }
+            }
+        };
+
+        // --- UI FUNCTIONS ---
+        function openGame(id) {
+            document.getElementById('gameModal').classList.add('open');
+            if (GAMES[id]) {
+                document.getElementById('gTitle').innerText = GAMES[id].title;
+                GAMES[id].run();
+            }
+        }
+        function closeGame() {
+            document.getElementById('gameModal').classList.remove('open');
+        }
+
+        // --- NAVIGATION & RESOURCES ---
+        // Same DB definition, but we need to ensure selectCard injects the dynamic link
+        // REDFINING DB to ensure scope access
+
+        const DB = {
+            1: {
+                title: "EXPLORADORES", desc: "Ciencia & Historia", color: "#f97316", glow: "glow-p1",
+                tris: [
+                    {
+                        icon: "🧬", title: "Biología", desc: "Exoplanetas",
+                        files: [
+                            { l: "Guía Docente", u: "guia_didactica_expedicion_biologica.html", tag: "DOCENTE" },
+                            { l: "Cuaderno Alumno", u: "cuaderno_campo_expedicion.html", tag: "ALUMNO" },
+                            { l: "Cartas Hábitats", u: "cartas_habitats_extremos.html", tag: "EXTRA" }
+                        ], gameId: 1
+                    },
+                    {
+                        icon: "🏛️", title: "Historia", desc: "Viajeros del Tiempo",
+                        files: [
+                            { l: "Guía Docente", u: "guia_didactica_mision_historia.html", tag: "DOCENTE" },
+                            { l: "Expediente", u: "expediente_agente_tiempo.html", tag: "ALUMNO" },
+                            { l: "Láminas Errores", u: "laminas_errores_historicos_completo.html", tag: "VISUAL" },
+                            { l: "Tarjetas", u: "tarjetas_errores_temporales_alumno.html", tag: "EXTRA" },
+                            { l: "Solucionario", u: "tarjetas_errores_temporales.html", tag: "PROFE" }
+                        ], gameId: 2
+                    },
+                    {
+                        icon: "💡", title: "Empresa", desc: "Feria de Inventos",
+                        files: [
+                            { l: "Guía Docente", u: "guia_didactica_emprendedores.html", tag: "DOCENTE" },
+                            { l: "Póster Visual", u: "lienzo_modelo_negocio.html", tag: "CANVAS" },
+                            { l: "Plan de Negocio", u: "ficha_plan_negocio.html", tag: "NUEVO" },
+                            { l: "Billetes", u: "materiales_emprendedores.html", tag: "EXTRA" }
+                        ], gameId: 3
+                    }
+                ]
+            },
+            2: {
+                title: "ACADEMIA HOLMES", desc: "Lógica y Deducción", color: "#a855f7", glow: "glow-p2",
+                tris: [
+                    {
+                        icon: "🔐", title: "Criptografía", desc: "Códigos",
+                        files: [
+                            { l: "Guía Docente", u: "guia_holmes_t1_criptografia.html", tag: "DOCENTE" },
+                            { l: "Rueda César", u: "kit_detective_criptografia.html", tag: "EXTRA" },
+                            { l: "Mensajes", u: "hoja_mensajes_secretos.html", tag: "NUEVO" }
+                        ], gameId: 4
+                    },
+                    {
+                        icon: "🔬", title: "Forense", desc: "CSI Lab",
+                        files: [
+                            { l: "Guía Docente", u: "guia_holmes_t2_forense.html", tag: "DOCENTE" },
+                            { l: "Informe Forense", u: "informe_forense_csi.html", tag: "ALUMNO" },
+                            { l: "Fichas Sospechosos", u: "fichas_huellas_sospechosos.html", tag: "NUEVO" },
+                            { l: "Etiquetas", u: "etiquetas_evidencia_csi.html", tag: "EXTRA" }
+                        ], gameId: 5
+                    },
+                    {
+                        icon: "🕵️‍♂️", title: "Espías", desc: "Misiones Secretas",
+                        files: [
+                            { l: "Guía Docente", u: "guia_holmes_t3_espias.html", tag: "DOCENTE" },
+                            { l: "Mapa Misión", u: "mapa_mision_espias.html", tag: "EXTRA" },
+                            { l: "Carnet Agente", u: "carnet_agente_secreto.html", tag: "NUEVO" },
+                            { l: "Diploma", u: "diploma_detective.html", tag: "FINAL" }
+                        ], gameId: 6
+                    }
+                ]
+            },
+            3: {
+                title: "ARQUITECTOS", desc: "Ingeniería y Futuro", color: "#22c55e", glow: "glow-p3",
+                tris: [
+                    {
+                        icon: "🏠", title: "Arquitectura", desc: "Viviendas Mundo",
+                        files: [
+                            { l: "Guía Docente", u: "guia_arquitectos_t1_ingenieria.html", tag: "DOCENTE" },
+                            { l: "Fichas Viviendas", u: "fichas_viviendas_mundo.html", tag: "VISUAL" },
+                            { l: "Investigación", u: "hoja_investigacion_vivienda.html", tag: "ALUMNO" },
+                            { l: "Ficha Materiales", u: "ficha_materiales_vivienda.html", tag: "TALLER" }
+                        ], gameId: 7
+                    },
+                    {
+                        icon: "📰", title: "La Voz de la Aldea", desc: "Periódico y Bulos",
+                        files: [
+                            { l: "Guía Docente", u: "guia_arquitectos_t2_periodismo.html", tag: "DOCENTE" },
+                            { l: "Guía 'Cazabulos'", u: "guia_detecta_noticias_falsas.html", tag: "DOCENTE" },
+                            { l: "Portada Periódico", u: "plantilla_portada_periodico.html", tag: "PLANTILLA" },
+                            { l: "Carnet Verificador", u: "credencial_verificador.html", tag: "EXTRA" }
+                        ], gameId: 8
+                    },
+                    {
+                        icon: "🌍", title: "Eco-Urbanismo", desc: "Sostenibilidad",
+                        files: [
+                            { l: "Guía Docente", u: "guia_arquitectos_t3_sostenibilidad.html", tag: "DOCENTE" },
+                            { l: "Plano Interactivo", u: "plano_urbanismo_sostenible.html", tag: "DIGITAL" },
+                            { l: "🎓 Obtener Diploma", u: "diploma_arquitecto_editable.html", tag: "DIPLOMA" }
+                        ], gameId: 9
+                    }
+                ]
+            }
+        };
+
+        let currentP = 1;
+
+        function enterApp(pId) {
+            document.getElementById('landing-screen').style.transform = "translateY(-120%)";
+            let m = document.getElementById('main-interface');
+            m.classList.remove('hidden');
+            setTimeout(() => m.style.opacity = 1, 300);
+            loadProject(pId);
+        }
+
+        function loadProject(pId) {
+            currentP = pId;
+            let d = DB[pId];
+            document.getElementById('p-title').innerText = d.title;
+            document.getElementById('p-desc').innerText = d.desc;
+
+            // Apply Theme Color to Sidebar active items
+            document.querySelectorAll('.sb-item.active').forEach(el => {
+                el.style.borderColor = d.color;
+                el.style.color = d.color;
+            });
+
+            for (let i = 0; i < 3; i++) {
+                let t = d.tris[i];
+                let idx = i + 1;
+                document.getElementById('title-' + idx).innerText = t.title;
+                document.getElementById('desc-' + idx).innerText = t.desc;
+                document.getElementById('icon-' + idx).innerText = t.icon;
+
+                let c = document.getElementById('card-' + idx);
+                c.className = `big-card ${d.glow}`;
+                c.style.borderColor = "#334155";
+                c.style.transform = "none";
+            }
+            document.getElementById('details-panel').style.display = 'none';
+        }
+
+        function showTrimester(pId, tId) {
+            if (pId !== currentP) loadProject(pId);
+            selectCard(tId);
+        }
+
+        function selectCard(tId) {
+            let d = DB[currentP];
+            let t = d.tris[tId - 1];
+
+            document.querySelectorAll('.big-card').forEach(c => { c.style.borderColor = "#334155"; c.classList.remove('active'); });
+            let c = document.getElementById('card-' + tId);
+            c.style.borderColor = d.color;
+            c.classList.add('active');
+
+            let p = document.getElementById('details-panel');
+            p.style.display = 'block';
+            p.style.borderColor = d.color;
+
+            let html = "";
+            t.files.forEach(f => {
+                let primary = f.tag === "DOCENTE" ? "primary" : "";
+                let style = primary ? `border-left: 4px solid ${d.color};` : "";
+                // LINK GENERATION WITH CONFIG
+                html += `
+                <div onclick="openWithConfig('${f.u}')" class="res-btn ${primary}" style="${style}; cursor:pointer;">
+                    <div style="display:flex; align-items:center;">
+                        <span class="cat-tag">${f.tag}</span>
+                        <span style="margin-left:10px; font-weight:600;">${f.l}</span>
+                    </div>
+                    <span style="font-size:1.2rem;">⬇️</span>
+                </div>`;
+            });
+            document.getElementById('dt-list').innerHTML = html;
+
+            if (t.gameId) {
+                document.getElementById('dt-game').innerHTML = `<button class="g-btn" style="width:100%; background:${d.color}; color:white;" onclick="openGame(${t.gameId})">🎮 JUGAR AHORA</button>`;
+            } else {
+                document.getElementById('dt-game').innerHTML = "";
+            }
+
+            p.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function openWithConfig(url) {
+            // Append school name param
+            let finalUrl = url + "?school=" + encodeURIComponent(APP_STATE.schoolName);
+            window.location.href = finalUrl;
+        }
+
+        // --- INIT & CONFIG UI ---
+        // Inject Config Button
+        // --- INIT & CONFIG UI ---
+        // Inject Config Button
+        window.onload = function () {
+            // Apply saved theme
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+            }
+
+            let sb = document.querySelector('.sidebar');
+            let cfgBtn = document.createElement('div');
+            cfgBtn.className = 'sb-item';
+            cfgBtn.innerHTML = "⚙️ Configuración";
+            cfgBtn.onclick = openConfig;
+            cfgBtn.style.marginTop = "auto";
+            cfgBtn.style.borderTop = "1px solid #333";
+            sb.appendChild(cfgBtn);
+
+            // Inject Config Modal
+            let modalHtml = `
+            <div id="configModal" class="modal-overlay">
+                <div class="game-modal" style="height:auto; text-align:left;">
+                    <span class="close-modal" onclick="closeConfig()">×</span>
+                    <h2 style="color:var(--text-main); text-align:center;">Configuración</h2>
+                    
+                    <div style="margin:20px 0;">
+                        <label style="display:block; margin-bottom:10px; font-weight:bold;">🏫 Nombre del Colegio/Clase:</label>
+                        <input type="text" id="cfgSchool" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; background:var(--bg-deep); color:var(--text-main);" value="${APP_STATE.schoolName}">
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin:15px 0; padding:10px; border:1px solid #475569; border-radius:8px;">
+                        <span>☀️ Modo Lectura (Claro)</span>
+                        <button id="btnTheme" class="g-btn" style="padding:5px 15px; font-size:0.9rem; margin:0;" onclick="toggleTheme()">OFF</button>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin:15px 0; padding:10px; border:1px solid #475569; border-radius:8px;">
+                        <span>🔊 Sonidos de Fondo</span>
+                        <button id="btnSound" class="g-btn" style="padding:5px 15px; font-size:0.9rem; margin:0;" onclick="AUDIO.toggle()">OFF</button>
+                    </div>
+
+                    <div style="margin-top:20px; border-top:1px dashed #666; padding-top:10px;">
+                        <h4 style="margin:0 0 10px 0;">💾 Gestión de Datos (JSON)</h4>
+                        <div style="display:flex; gap:10px;">
+                            <button class="g-btn" style="flex:1; background:#3b82f6; font-size:1rem; padding:10px;" onclick="exportData()">⬇️ Exportar</button>
+                            <button class="g-btn" style="flex:1; background:#eab308; font-size:1rem; padding:10px;" onclick="document.getElementById('importFile').click()">⬆️ Importar</button>
+                            <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(this)">
+                        </div>
+                    </div>
+
+                    <div style="text-align:center; margin-top:20px;">
+                        <button class="g-btn true" onclick="saveConfig()">Guardar Nombre</button>
+                    </div>
+                </div>
+            </div>`;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            updateConfigUI();
+        };
+
+        function toggleTheme() {
+            let body = document.body;
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            updateConfigUI();
+        }
+
+        function exportData() {
+            let data = {
+                schoolName: APP_STATE.schoolName,
+                level2: APP_STATE.level2Unlocked,
+                // Add any other state we want to save
+            };
+            let json = JSON.stringify(data, null, 2);
+            let blob = new Blob([json], { type: "application/json" });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = "progreso_clase_apac.json";
+            a.click();
+        }
+
+        function importData(input) {
+            let file = input.files[0];
+            if (!file) return;
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    let data = JSON.parse(e.target.result);
+                    if (data.schoolName) {
+                        APP_STATE.schoolName = data.schoolName;
+                        localStorage.setItem('schoolName', data.schoolName);
+                        document.getElementById('cfgSchool').value = data.schoolName;
+                    }
+                    if (data.level2 !== undefined) APP_STATE.level2Unlocked = data.level2;
+                    alert("¡Datos importados correctamente! 📥");
+                } catch (err) {
+                    alert("Error al leer el archivo. Asegúrate de que es un JSON válido.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function openConfig() {
+            document.getElementById('configModal').classList.add('open');
+            updateConfigUI();
+        }
+        function closeConfig() {
+            document.getElementById('configModal').classList.remove('open');
+        }
+        function updateConfigUI() {
+            // Sound
+            let btnS = document.getElementById('btnSound');
+            if (APP_STATE.soundEnabled) { btnS.innerText = "ON"; btnS.className = "g-btn true"; }
+            else { btnS.innerText = "OFF"; btnS.className = "g-btn false"; }
+
+            // Theme
+            let btnT = document.getElementById('btnTheme');
+            let isLight = document.body.getAttribute('data-theme') === 'light';
+            if (isLight) { btnT.innerText = "ON"; btnT.className = "g-btn true"; }
+            else { btnT.innerText = "OFF"; btnT.className = "g-btn false"; }
+        }
+        function saveConfig() {
+            let name = document.getElementById('cfgSchool').value;
+            APP_STATE.schoolName = name;
+            localStorage.setItem('schoolName', name);
+            closeConfig();
+            alert("Configuración Guardada");
+        }
+
+    </script>
+</body>
+
+</html>

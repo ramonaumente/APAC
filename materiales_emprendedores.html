@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Materiales: Feria de Inventos</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #eee;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* BILLETES */
+        .bill-sheet {
+            background: white;
+            padding: 20px;
+            max-width: 210mm;
+            margin: 0 auto 40px auto;
+            border: 1px solid #ccc;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bill {
+            display: inline-block;
+            width: 300px;
+            height: 140px;
+            border: 2px solid #333;
+            margin: 10px;
+            position: relative;
+            background-color: #e8f5e9;
+            /* Green tint */
+            text-align: left;
+            padding: 10px;
+            box-sizing: border-box;
+            background-image: radial-gradient(#a5d6a7 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+
+        .bill-val {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2e7d32;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .bill-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bill-sub {
+            font-size: 0.8rem;
+            margin-top: 50px;
+            display: block;
+        }
+
+        /* CHEQUE CORRECTED */
+        .giant-check {
+            width: 100%;
+            max-width: 260mm;
+            /* Fit A4 Landscape width with margins */
+            height: 120mm;
+            /* Fit A4 Landscape height */
+            border: 4px double #1A237E;
+            margin: 20px auto;
+            padding: 10mm;
+            background: #E8EAF6;
+            position: relative;
+            box-sizing: border-box;
+            text-align: left;
+            font-family: 'Times New Roman', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .check-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .bank-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1A237E;
+        }
+
+        .check-date {
+            border-bottom: 1px solid #333;
+            width: 200px;
+            text-align: center;
+        }
+
+        .pay-to {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .pay-line {
+            flex-grow: 1;
+            border-bottom: 1px solid #333;
+            margin-left: 10px;
+        }
+
+        .amount-text {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .amount-box {
+            border: 2px solid #1A237E;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: white;
+            margin-left: auto;
+            /* Push to right */
+        }
+
+        .signature {
+            align-self: flex-end;
+            width: 300px;
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding-top: 5px;
+            font-style: italic;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .bill-sheet {
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+
+            .giant-check {
+                border-width: 2px;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Todo</button>
+
+    <!-- BILLETES -->
+    <div class="bill-sheet">
+        <h2>💵 BILLETES ESCOLARES (Imprimir en papel verde)</h2>
+        <div class="bill">
+            <div class="bill-name">BANCO ESCOLAR</div>
+            <div class="bill-val">10 €</div>
+            <span class="bill-sub">Validez Legal en el Aula</span>
+        </div>
+        <div class="bill">
+            <div class="bill-name">BANCO ESCOLAR</div>
+            <div class="bill-val">20 €</div>
+            <span class="bill-sub">Validez Legal en el Aula</span>
+        </div>
+        <div class="bill">
+            <div class="bill-name">BANCO ESCOLAR</div>
+            <div class="bill-val">50 €</div>
+            <span class="bill-sub">Validez Legal en el Aula</span>
+        </div>
+        <div class="bill">
+            <div class="bill-name">BANCO ESCOLAR</div>
+            <div class="bill-val">100 €</div>
+            <span class="bill-sub">Validez Legal en el Aula</span>
+        </div>
+    </div>
+
+    <!-- CHEQUE GIGANTE -->
+    <div class="giant-check">
+        <div class="check-header">
+            <div class="bank-name">🏛️ BANCO DE TALENTOS</div>
+            <div>FECHA: <span
+                    class="check-date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+
+        <div class="pay-to">
+            PÁGUESE POR ESTE CHEQUE A LA ORDEN DE:
+            <span class="pay-line"></span>
+        </div>
+
+        <div class="amount-text">
+            LA CANTIDAD DE:
+            <span class="pay-line" style="margin-right: 20px;"></span>
+            <div class="amount-box">€ ...................</div>
+        </div>
+
+        <div style="font-size: 0.9rem; color: #555;">CONCEPTO: Premio al Mejor Invento</div>
+
+        <div class="signature">Firma del Inversor</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guía Detecta Noticias Falsas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #e2e8f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .guide-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #f97316;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .step h2 {
+            color: #c2410c;
+            margin-top: 0;
+        }
+
+        .icon {
+            font-size: 2em;
+            float: right;
+        }
+
+        .myth-box {
+            background: #f1f5f9;
+            border: 2px dashed #94a3b8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .myth-title {
+            font-weight: bold;
+            color: #475569;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .btn-print {
+            margin-top: 30px;
+            padding: 10px 30px;
+            background: #334155;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .semaforo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .light {
+            padding: 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            opacity: 0.3;
+            border: 3px solid #333;
+        }
+
+        .red {
+            background: #ef4444;
+        }
+
+        .yellow {
+            background: #eab308;
+        }
+
+        .green {
+            background: #22c55e;
+        }
+
+        @media print {
+            .btn-print {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .guide-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="guide-container">
+        <h1>🕵️ Guía: Detecta Noticias Falsas</h1>
+        <p style="font-size:1.2em; color:#64748b;">¿Verdad, Bulo o Clickbait? Tu misión es descubrirlo.</p>
+
+        <div class="semaforo">
+            <div class="light red" title="Bulo"></div>
+            <div class="light yellow" title="Dudoso"></div>
+            <div class="light green" title="Verdad"></div>
+        </div>
+
+        <div class="step">
+            <span class="icon">🛑</span>
+            <h2>PASO 1: ¿Te emociona demasiado?</h2>
+            <p>Si un titular te da mucho miedo o mucha alegría, ¡SOSPECHA! Las noticias falsas juegan con tus
+                sentimientos.</p>
+            <p><i>Ejemplo: "¡Robots prohibirán la entrada a humanos en las casas!"</i></p>
+        </div>
+
+        <div class="step">
+            <span class="icon">🔍</span>
+            <h2>PASO 2: Busca la Fuente</h2>
+            <p>¿Quién lo dice? ¿Un científico experto o "un amigo de un amigo"?</p>
+            <ul>
+                <li>✅ Fuente fiable: Universidad, Museo, Periódico serio.</li>
+                <li>❌ Fuente dudosa: Cadena de WhatsApp, Web sin autor.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="icon">🏘️</span>
+            <h2>PASO 3: Contrasta con la Realidad</h2>
+            <p>Usa tu lógica. En Arquitectura y Construcción, la física manda.</p>
+            <p><i>Mito: "Casas de chocolate". Realidad: Se derretirían o llenarían de insectos.</i></p>
+        </div>
+
+        <div class="myth-box">
+            <span class="myth-title">📝 TU PRIMERA MISIÓN: INVESTIGA ESTE TITULAR</span>
+            <h3 style="color:#0f172a;">"Un nuevo material hecho de aire sustituye al ladrillo."</h3>
+            <p>1. ¿Existe el Aerogel? ____________</p>
+            <p>2. ¿Es lo bastante fuerte para una casa entera? ____________</p>
+            <p>3. ¿Veredicto? (Verde/Amarillo/Rojo): ____________</p>
+        </div>
+
+        <button class="btn-print" onclick="window.print()">🖨️ IMPRIMIR GUÍA</button>
+    </div>
+
+</body>
+
+</html>

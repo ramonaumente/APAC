@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diario de la Verdad</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .newspaper {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #fffbe6;
+            padding: 10mm;
+            /* Reduced padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px double black;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .title {
+            font-size: 50px;
+            /* Reduced title size */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .meta {
+            font-family: sans-serif;
+            font-size: 14px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            padding: 5px;
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .headline {
+            font-size: 24px;
+            /* Smaller headline */
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            font-style: italic;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .columns {
+            display: flex;
+            gap: 20px;
+            /* Reduced gap */
+            height: 100%;
+        }
+
+        .col-main {
+            flex: 2.5;
+        }
+
+        .col-side {
+            flex: 1;
+            border-left: 1px solid #333;
+            /* Thinner border */
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            /* Increased gap to push Curiosidad down */
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 200px;
+            /* Reduced height */
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #64748b;
+            margin-bottom: 15px;
+            color: #64748b;
+            font-family: sans-serif;
+            cursor: pointer;
+        }
+
+        .article-text {
+            font-size: 16px;
+            /* Reduced from 18px */
+            line-height: 1.4;
+            text-align: justify;
+            min-height: 250px;
+        }
+
+        .myth-section {
+            background: #f1f5f9;
+            padding: 15px;
+            border: 2px solid #333;
+        }
+
+        .myth-header {
+            font-family: sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .editable {
+            border: 1px dashed #ccc;
+            padding: 5px;
+        }
+
+        .editable:hover {
+            background: rgba(255, 255, 0, 0.1);
+            cursor: text;
+        }
+
+        .truthometer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tm-item {
+            text-align: left;
+            font-family: sans-serif;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
+        }
+
+        .tm-item:hover {
+            opacity: 0.8;
+            border-color: #999;
+        }
+
+        .tm-item.active {
+            opacity: 1;
+            font-weight: bold;
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .newspaper {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                min-height: 100vh;
+            }
+
+            .editable {
+                border: none;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+    <script>
+        function selectTruth(clickedItem) {
+            // Remove active class from all items
+            const items = document.querySelectorAll('.tm-item');
+            items.forEach(item => item.classList.remove('active'));
+
+            // Add active class to clicked item
+            clickedItem.classList.add('active');
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="newspaper">
+        <div class="header">
+            <div class="title">LA VOZ DE LA ALDEA</div>
+            <div class="meta">
+                <span class="editable" contenteditable="true">FECHA: Hoy</span>
+                <span class="editable" contenteditable="true">EDICIÓN: Especial Arquitectura</span>
+                <span class="editable" contenteditable="true">COSTE: Gratis</span>
+            </div>
+        </div>
+
+        <div class="headline editable" contenteditable="true">¡DESCUBIERTO: LA VERDAD SOBRE... !</div>
+
+        <div class="columns">
+            <div class="col-main">
+                <div class="img-placeholder"
+                    onclick="document.execCommand('insertImage', false, prompt('URL imagen (ej: https://via.placeholder.com/400):'))">
+                    [CLIC PARA INSERTAR FOTO DE LA NOTICIA]
+                </div>
+                <div class="article-text editable" contenteditable="true" style="min-height: 500px;">
+                    (Escribe aquí tu reportaje. Puedes contar una noticia de la aldea o investigar un mito.
+                    <br><br>
+                    <strong>Si es una noticia de la aldea:</strong> ¿Quién ha construido la yurta? ¿Cuándo fue la
+                    fiesta?
+                    <br>
+                    <strong>Si es un "Cazabulos":</strong> ¿Qué mito investigas? ¿Es verdad o mentira?
+                    <br><br>
+                    Recuerda usar un lenguaje periodístico claro, citar tus fuentes y explicar por qué es importante
+                    saber la verdad.)
+                </div>
+            </div>
+
+            <div class="col-side">
+                <div class="myth-section">
+                    <div class="myth-header">SEMÁFORO DEL BULO</div>
+                    <p style="font-size:12px; margin-bottom:10px; font-family:sans-serif; text-align:center;">(Haz clic
+                        para seleccionar)</p>
+                    <div class="truthometer">
+                        <div class="tm-item" onclick="selectTruth(this)" style="background:#dcfce7;">
+                            <div class="circle" style="background:#22c55e"></div>VERDAD
+                        </div>
+                        <div class="tm-item" onclick="selectTruth(this)" style="background:#fef9c3;">
+                            <div class="circle" style="background:#eab308"></div>DUDOSO
+                        </div>
+                        <div class="tm-item" onclick="selectTruth(this)" style="background:#fee2e2;">
+                            <div class="circle" style="background:#ef4444"></div>FALSO
+                        </div>
+                    </div>
+                </div>
+
+                <div class="myth-section" style="flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="myth-header">CURIOSIDAD</div>
+                    <div class="editable" contenteditable="true" style="font-size:16px; flex-grow: 1;">
+                        ¿Sabías que...? Escribe aquí un dato curioso relacionado con la construcción o la tecnología que
+                        hayas descubierto durante tu investigación.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myth-section" style="margin-top:20px;">
+            <div class="myth-header" style="text-align:left; padding-left:20px;">FIRMA REPORTERO/A</div>
+            <div class="editable" contenteditable="true"
+                style="height:40px; border-bottom:1px solid #333; margin-top:5px; font-size:18px; font-style:italic;">
+                (Firma aquí)
+            </div>
+        </div>
+    </div>
+
+    <div class="no-print" style="text-align:center; margin-top:20px;">
+        <p>💡 Haz clic en los textos para editar y en el semáforo para puntuar.</p>
+        <button onclick="window.print()" style="padding:10px 20px; font-size:16px; cursor:pointer;">🖨️ PUBLICAR NOTICIA
+            (PDF)</button>
+    </div>
+
+</body>
+
+</html>

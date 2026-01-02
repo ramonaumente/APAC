@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha: Plan de Negocio Express</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fff;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        .header {
+            background: #f97316;
+            /* Orange for Project 1 */
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        .container {
+            border: 2px solid #f97316;
+            border-top: none;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            background: #fff7ed;
+            padding: 15px;
+            border-left: 5px solid #f97316;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #ea580c;
+            font-size: 1.2em;
+        }
+
+        .input-line {
+            border-bottom: 2px dashed #999;
+            display: block;
+            margin-top: 30px;
+        }
+
+        .logo-box {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #ccc;
+            float: right;
+            margin-top: -50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1 style="margin:0;">🚀 MI PLAN DE NEGOCIO</h1>
+        <p style="margin:5px 0 0;">Programa Pequeños Emprendedores | Trimestre 3</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. NUESTRA EMPRESA SE LLAMA:</h2>
+            <span class="input-line"></span>
+            <div class="logo-box">DIBUJA TU LOGO</div>
+        </div>
+
+        <div class="section">
+            <h2>2. ¿QUÉ PROBLEMA RESOLVEMOS?</h2>
+            <p>¿Qué le pasa a la gente y cómo les ayudamos?</p>
+            <span class="input-line"></span>
+            <span class="input-line"></span>
+        </div>
+
+        <div class="section">
+            <h2>3. NUESTRO SUPER-PRODUCTO / SERVICIO</h2>
+            <p>¿Qué vendemos exactamente?</p>
+            <span class="input-line"></span>
+            <span class="input-line"></span>
+        </div>
+
+        <div class="section">
+            <h2>4. ¿QUIÉN ES NUESTRO CLIENTE?</h2>
+            <p>(Ejemplo: Niños deportistas, abuelos modernos, profes cansados...)</p>
+            <span class="input-line"></span>
+        </div>
+
+        <div class="section">
+            <h2>5. CUENTAS CLARAS</h2>
+            <p>Coste de fabricación: ________ €</p>
+            <p>Precio de venta: ________ €</p>
+            <p><strong>BENEFICIO: ________ €</strong></p>
+        </div>
+    </div>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .container {
+                border-width: 2px;
+            }
+        }
+    </style>
+    <button class="no-print"
+        style="display: block; margin: 20px auto; padding: 10px 20px; background: #ea580c; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;"
+        onclick="window.print()">🖨️ IMPRIMIR FICHA</button>
+
+</body>
+
+</html>

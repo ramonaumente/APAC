@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GUÍA: Periodismo Galáctico (Premium)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: justify;
+        }
+
+        /* DISEÑO ARQUITECTOS (Verde) */
+        header {
+            border-bottom: 4px solid #22c55e;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #15803d;
+            font-weight: 800;
+            font-size: 2.2em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-left: 6px solid #22c55e;
+            padding-left: 15px;
+            color: #15803d;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #f0fdf4;
+            padding: 10px 15px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #bbf7d0;
+            padding: 10px;
+        }
+
+        .rubric-table th {
+            background: #22c55e;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '📰 CONSEJO DE EDITOR:';
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .adapt-box {
+            background: #ecfdf5;
+            border: 2px dashed #22c55e;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .session-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #dcfce7;
+            padding-bottom: 15px;
+        }
+
+        .session-title {
+            font-weight: 800;
+            color: #15803d;
+            font-size: 1.1em;
+            text-decoration: underline;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 8px 15px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .print-btn:hover {
+            opacity: 1;
+            background: #22c55e;
+            color: white;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Guía</button>
+
+    <header>
+        <div>
+            <h1>La Voz de la Aldea</h1>
+            <div style="color: #166534; margin-top: 5px; font-weight: 600;">Trimestre 2 | Programa ARQUITECTOS</div>
+        </div>
+        <div style="font-size: 3em;">📰</div>
+    </header>
+
+    <h2>1. Ficha Técnica</h2>
+    <table class="rubric-table">
+        <tr>
+            <th style="width: 25%;">Nivel</th>
+            <td>Primaria (3º - 6º)</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>1 Trimestre (10-12 Sesiones)</td>
+        </tr>
+        <tr>
+            <th>Áreas</th>
+            <td>Lengua (Redacción), Ciencias Sociales (Cultura), TIC</td>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <td>"El Periódico de la Aldea Global" (Noticias y Desmentido de Bulos).</td>
+        </tr>
+    </table>
+
+    <h2>2. Fundamentación Pedagógica</h2>
+    <p>En "La Aldea Global", conviven muchas culturas. ¿Cómo nos enteramos de lo que pasa? Necesitamos periodistas
+        valientes. En este trimestre, los alumnos no solo cuentan lo que sucede en la aldea (entrevistas a
+        constructores, avances de obra), sino que aprenden a defenderse de las mentiras. <strong>"El Semáforo del
+            Bulo"</strong> les enseña a pensar antes de creer.</p>
+
+    <h2>3. Concreción Curricular</h2>
+    <div class="tip-box" style="border-color: #22c55e; background: #fff;">
+        <p><strong>Competencias Clave Trabajadas:</strong></p>
+        <ul>
+            <li><strong>Competencia Lingüística:</strong> Redactar noticias claras y atractivas. Entrevistar con
+                preguntas abiertas ("¿Cómo...", "¿Por qué...").</li>
+            <li><strong>Pensamiento Crítico (Detector de Bulos):</strong> Analizar titulares sensacionalistas sobre
+                arquitectura o energía (ej. "¿Paneles solares que funcionan con la luna?").</li>
+            <li><strong>Competencia Ciudadana:</strong> Informar con veracidad para que la aldea tome buenas decisiones.
+            </li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Saberes Básicos:</strong></p>
+        <table style="width:100%; font-size: 0.9em; border-collapse: collapse;">
+            <tr>
+                <td style="vertical-align: top; padding-right: 20px;">
+                    <strong>📰 Géneros Periodísticos:</strong>
+                    <ul>
+                        <li>La Noticia: Lo que ha pasado (Objeto).</li>
+                        <li>La Entrevista: La voz de los protagonistas.</li>
+                        <li>El Reportaje de Investigación (Fact-Checking).</li>
+                    </ul>
+                </td>
+                <td style="vertical-align: top;">
+                    <strong>🌍 Valores:</strong>
+                    <ul>
+                        <li>La verdad como herramienta de convivencia.</li>
+                        <li>Respeto a la diversidad cultural en las noticias.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>4. Materiales</h2>
+    <ul>
+        <li>Plantilla "La Voz de la Aldea".</li>
+        <li>Carnets de Prensa (Verificador de Datos).</li>
+        <li>Noticias Falsas para analizar (titulares impresos).</li>
+        <li>Grabadora o tablet para entrevistas.</li>
+    </ul>
+
+    <h2>5. Secuencia Didáctica Detallada</h2>
+    <div class="session-block">
+        <div class="session-title">Fase 1: Cazadores de Bulos (Sesiones 1-3)</div>
+        <p>Antes de informar, aprendemos a no ser engañados.
+            <strong>Actividad:</strong> "El Semáforo del Bulo". Analizamos rumores sobre la aldea.
+            <em>Ejemplo: "Dicen que las casas de paja se caen si estornudas."</em> -> Investigamos (cuento de los 3
+            cerditos vs. realidad de la bioconstrucción). Veredicto: ¡FALSO!
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 2: Reporteros de Campo (Sesiones 4-7)</div>
+        <p>Salimos a la calle. Los periodistas visitan las obras del Trimestre 1.
+            <strong>Entrevista:</strong> Preguntan a los "Arquitectos" por qué han elegido esos materiales. "¿Es verdad
+            que su Iglú aguanta el calor?".
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 3: Redacción y Maquetación (Sesiones 8-10)</div>
+        <p>Escribimos las noticias.
+            <br>1. Noticia de Portada: "Inaugurada la primera Yurta Solar".
+            <br>2. Sección de Desmentidos: "¿Placas solares de noche? La verdad científica".
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 4: Edición Especial (Sesiones 11-12)</div>
+        <p>Publicamos el periódico y lo repartimos por la aldea (o el colegio). Leemos las noticias de los compañeros y
+            buscamos si se ha colado algún error.</p>
+    </div>
+
+    <h2>6. Medidas de Inclusión y Desafío (Altas Capacidades)</h2>
+    <div class="adapt-box">
+        <strong>Nivel 1: Ampliación</strong>
+        <p>Hacer fotos reales de las maquetas para ilustrar la noticia.</p>
+
+        <br><strong>Nivel 2: Profundización</strong>
+        <p><strong>Editorial de Opinión:</strong> Escribir un artículo de opinión razonada. "¿Deberíamos prohibir el
+            plástico en la aldea?". Requiere argumentar, no solo informar.</p>
+
+        <br><strong>Nivel 3: Transferencia</strong>
+        <p>Crear un "Blog de la Aldea" real en internet (con supervisión) para compartir los descubrimientos sobre
+            sostenibilidad.</p>
+    </div>
+
+    <h2>7. Evaluación (Rúbrica)</h2>
+    <p>Valoramos la calidad de la información y la capacidad de comunicar.</p>
+    <table class="rubric-table">
+        <tr>
+            <th>Qué valoramos</th>
+            <th>¡Experto! (10-9)</th>
+            <th>¡Muy bien! (8-6)</th>
+            <th>En camino (5-1)</th>
+        </tr>
+        <tr>
+            <td><strong>Calidad de la Noticia</strong></td>
+            <td>El texto está bien ordenado, tiene un titular genial y responde a todas las preguntas (5W). No tiene
+                faltas.</td>
+            <td>La noticia se entiende pero le falta algún dato importante o tiene faltas de ortografía.</td>
+            <td>El texto es confuso, las frases no tienen sentido o es muy corto.</td>
+        </tr>
+        <tr>
+            <td><strong>Veracidad (Verdad)</strong></td>
+            <td>Todo lo que cuenta es verdad y lo ha comprobado. Separa perfectamente los hechos de su opinión.</td>
+            <td>Cuenta la verdad pero a veces mezcla cosas que se imagina o mete su opinión donde no debe.</td>
+            <td>Se inventa la noticia o cuenta chismes sin comprobar nada.</td>
+        </tr>
+        <tr>
+            <td><strong>Comunicación (Oral)</strong></td>
+            <td>Habla ante la cámara con seguridad, voz clara y mirando al público. Parece un profesional.</td>
+            <td>Lee el papel todo el rato o habla muy bajito, pero se le entiende.</td>
+            <td>Le da mucha vergüenza, se ríe todo el rato o se niega a hablar.</td>
+        </tr>
+    </table>
+
+</body>

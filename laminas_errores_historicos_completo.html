@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Archivo: Cazadores de Errores (COMPLETO)</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: #fff;
+            padding: 20px;
+            max-width: 210mm;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 4px solid #ea580c;
+            padding-bottom: 20px;
+            color: #ea580c;
+            text-transform: uppercase;
+            font-size: 2em;
+        }
+
+        .level-section {
+            page-break-before: always;
+            margin-top: 40px;
+        }
+
+        .level-section:first-of-type {
+            page-break-before: auto;
+        }
+
+        .level-header {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .level-badge {
+            background: #fff;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.6em;
+            text-transform: uppercase;
+        }
+
+        .instructions {
+            background: #fdf2f8;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            width: 100%;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .report-box {
+            border: 1px solid #999;
+            padding: 10px;
+            min-height: 120px;
+            background: #f9fafb;
+        }
+
+        .report-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #ea580c;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .line {
+            border-bottom: 1px solid #ccc;
+            margin-top: 25px;
+        }
+
+        /* Level Specific Colors */
+        .lvl1 .level-header {
+            background: #0284c7;
+        }
+
+        /* Blue */
+        .lvl1 h1 {
+            color: #0284c7;
+        }
+
+        .lvl2 .level-header {
+            background: #7e22ce;
+        }
+
+        /* Purple */
+        .lvl2 h1 {
+            color: #7e22ce;
+        }
+
+        .lvl3 .level-header {
+            background: #be123c;
+        }
+
+        /* Red */
+        .lvl3 h1 {
+            color: #be123c;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="no-print"
+        style="position:fixed; top:20px; right:20px; padding:15px; background:#ea580c; color:white; border:none; font-weight:bold; cursor:pointer; font-size:1.2em; border-radius:5px; z-index:1000;"
+        onclick="window.print()">🖨️ IMPRIMIR TODO</button>
+
+    <div style="text-align:center; padding: 50px 0; border: 5px double #333; margin-bottom: 40px;" class="cover-page">
+        <div style="font-size: 5em;">🕵️‍♂️</div>
+        <h1 style="border:none; font-size: 3em; color: #333;">TOP SECRET</h1>
+        <h2>ARCHIVO DE ERRORES HISTÓRICOS</h2>
+        <p>AGENCIA DEL TIEMPO - DEPARTAMENTO DE ANOMALÍAS</p>
+        <p><strong>Agente:</strong> _______________________________________</p>
+    </div>
+
+    <!-- NIVEL 1 -->
+    <div class="level-section lvl1">
+        <div class="level-header">
+            <span>Misión 1: Iniciado</span>
+            <span class="level-badge">Principiante</span>
+        </div>
+        <div class="instructions">
+            <strong>Objetivo:</strong> Encuentra los errores obvios en estas 4 escenas.
+        </div>
+        <div class="image-container">
+            <img src="history_visual_errors_page.png" alt="Nivel 1">
+        </div>
+        <div class="report-grid">
+            <div class="report-box"><span class="report-title">Caso 1: El Romano</span>Objeto:<div class="line"></div>
+                Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 2: El Caballero</span>Objeto:<div class="line">
+                </div>Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 3: El Cavernícola</span>Objeto:<div class="line">
+                </div>Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 4: El Vikingo</span>Objeto:<div class="line"></div>
+                Por qué es imposible:<div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NIVEL 2 -->
+    <div class="level-section lvl2">
+        <div class="level-header">
+            <span>Misión 2: Experto</span>
+            <span class="level-badge">Dificultad Media</span>
+        </div>
+        <div class="instructions">
+            <strong>Objetivo:</strong> Encuentra anacronismos sutiles. Fíjate en marcas, materiales y tecnología.
+        </div>
+        <div class="image-container">
+            <img src="history_visual_errors_level2.png" alt="Nivel 2">
+        </div>
+        <div class="report-grid">
+            <div class="report-box"><span class="report-title">Caso 5: Jazz 1920</span>Objeto:<div class="line"></div>
+                Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 6: Taller Da Vinci</span>Objeto:<div class="line">
+                </div>Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 7: Olimpiadas</span>Objeto:<div class="line"></div>
+                Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 8: Saloon</span>Objeto:<div class="line"></div>Por
+                qué es imposible:<div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NIVEL 3 -->
+    <div class="level-section lvl3">
+        <div class="level-header">
+            <span>Misión 3: Genio</span>
+            <span class="level-badge">Imposible</span>
+        </div>
+        <div class="instructions">
+            <strong>Objetivo:</strong> Errores muy escondidos o irónicos. Solo para los mejores observadores.
+        </div>
+        <div class="image-container">
+            <img src="history_visual_errors_level3.png" alt="Nivel 3">
+        </div>
+        <div class="report-grid">
+            <div class="report-box"><span class="report-title">Caso 9: Egipto</span>Objeto:<div class="line"></div>Por
+                qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 10: Castillo</span>Objeto:<div class="line"></div>
+                Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 11: Londres Victoriano</span>Objeto:<div
+                    class="line"></div>Por qué es imposible:<div class="line"></div>
+            </div>
+            <div class="report-box"><span class="report-title">Caso 12: Templo Azteca</span>Objeto:<div class="line">
+                </div>Por qué es imposible:<div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cuaderno de Campo</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fdf5e6;
+            padding: 40px;
+        }
+
+        .notebook {
+            background: white;
+            border: 1px solid #aaa;
+            padding: 50px;
+            width: 210mm;
+            margin: 0 auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px dashed #666;
+            padding-bottom: 20px;
+        }
+
+        .field {
+            margin: 20px 0;
+            border-bottom: 1px solid #ccc;
+            height: 30px;
+        }
+
+        .text-box {
+            border: 2px solid #ddd;
+            height: 100px;
+            margin: 5px 0 20px 0;
+            border-radius: 5px;
+        }
+
+        .drawing-box {
+            border: 2px solid #ccc;
+            height: 300px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            font-family: sans-serif;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.05);
+            background: #ea580c;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .notebook {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn no-print" onclick="window.print()">
+        🖨️ IMPRIMIR CUADERNO
+    </button>
+
+    <div class="notebook">
+        <h1>📓 CUADERNO DE CAMPO</h1>
+        <p><strong>Explorador/a:</strong> _________________________________</p>
+        <p><strong>Fecha de la Misión:</strong> ________________________________</p>
+
+        <h3>1. ANÁLISIS DEL HÁBITAT</h3>
+        <p>Descripción del planeta encontrado (Temperatura, Atmósfera, Terreno):</p>
+        <div class="field"></div>
+        <div class="field"></div>
+
+        <h3>2. ESQUEMA DE LA CRIATURA</h3>
+        <div class="drawing-box">
+            (DIBUJA AQUÍ TU DESCUBRIMIENTO)
+        </div>
+
+        <h3>3. NOTAS CIENTÍFICAS</h3>
+        <p><strong>Nombre de la Especie:</strong></p>
+        <div class="field"></div>
+
+        <p><strong>Alimentación</strong> (¿Qué come? ¿Es carnívoro o herbívoro?):</p>
+        <div class="text-box"></div>
+
+        <p><strong>Comportamiento</strong> (¿Cómo se mueve? ¿Es rápido o lento? ¿Vive solo o en grupo?):</p>
+        <div class="text-box"></div>
+    </div>
+</body>
+
+</html>

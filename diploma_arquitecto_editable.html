@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diploma Arquitecto - Aldea Global</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Pinyon+Script&family=Poppins:wght@300;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .diploma-container {
+            width: 297mm;
+            /* A4 Landscape */
+            height: 210mm;
+            background: #fff;
+            position: relative;
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 20px solid #fff;
+            outline: 5px double #22c55e;
+            /* Eco Green Border */
+            outline-offset: -15px;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(34, 197, 94, 0.05) 0%, transparent 20%);
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(0, 0, 0, 0.03);
+            z-index: 0;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            font-family: 'Cinzel', serif;
+        }
+
+        .header {
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin: 0;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .sub-header {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .certifies {
+            margin: 40px 0 20px 0;
+            font-size: 1.5rem;
+            color: #1e293b;
+            font-style: italic;
+        }
+
+        /* EDITABLE FIELDS */
+        .editable {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 4.5rem;
+            color: #15803d;
+            /* Dark Green */
+            border-bottom: 1px dashed #cbd5e1;
+            min-width: 400px;
+            text-align: center;
+            margin: 10px 0;
+            padding: 0 20px;
+            outline: none;
+            transition: 0.3s;
+            cursor: text;
+        }
+
+        .editable:hover,
+        .editable:focus {
+            background: rgba(34, 197, 94, 0.05);
+            border-bottom: 1px solid #15803d;
+        }
+
+        .editable-school {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #334155;
+            font-weight: 600;
+            border-bottom: 1px dashed #cbd5e1;
+            min-width: 200px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .reason {
+            margin: 20px 0 40px 0;
+            font-size: 1.1rem;
+            color: #475569;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.6;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-top: 40px;
+            z-index: 10;
+        }
+
+        .sig-block {
+            text-align: center;
+            border-top: 1px solid #94a3b8;
+            padding-top: 10px;
+            width: 250px;
+        }
+
+        .sig-title {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* UI CONTROLS (Hidden on Print) */
+        .ui-controls {
+            position: fixed;
+            bottom: 30px;
+            background: #1e293b;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn.print {
+            background: #22c55e;
+        }
+
+        .btn.back {
+            background: #64748b;
+        }
+
+        @media print {
+            body {
+                background: white;
+                display: block;
+                height: auto;
+            }
+
+            .diploma-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                /* Force full page */
+            }
+
+            .ui-controls {
+                display: none;
+            }
+
+            .editable {
+                border: none !important;
+                background: none !important;
+            }
+
+            .editable-school {
+                border: none !important;
+            }
+
+            /* Remove margins generated by browser */
+            @page {
+                margin: 0;
+                size: landscape;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="diploma-container">
+        <!-- Decoration -->
+        <div class="watermark">APAC</div>
+
+        <div class="header">
+            <h1>Diploma de Honor</h1>
+            <div class="sub-header">Trilogía de Enriquecimiento - Nivel 3</div>
+        </div>
+
+        <div class="certifies">Se otorga el presente reconocimiento a:</div>
+
+        <!-- Editable Name -->
+        <div class="editable" contenteditable="true" id="studentName">Nombre del Alumno</div>
+
+        <div class="reason">
+            Por haber completado con éxito el proyecto <strong>"Arquitectos de la Aldea Global"</strong>,<br>
+            diseñando soluciones sostenibles y demostrando pensamiento crítico.
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            Otorgado en: <span class="editable-school" contenteditable="true" id="schoolName">Nombre del Colegio</span>
+        </div>
+
+        <div style="margin-bottom: 40px; color: #64748b;">
+            Fecha: <span id="currentDate">--/--/----</span>
+        </div>
+
+        <div class="signatures">
+            <div class="sig-block">
+                <div class="sig-title">Firma del Profesor/a</div>
+            </div>
+            <div class="sig-block">
+                <img src="logo_apac.png" alt="Sello APAC" style="height: 50px; opacity: 0.5; filter: grayscale(1);">
+                <div class="sig-title">Sello APAC</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-controls">
+        <a href="00. Portal_Maestro_Trilogia_FINAL.html" class="btn back">↩️ Volver</a>
+        <button class="btn print" onclick="window.print()">🖨️ Imprimir</button>
+    </div>
+
+    <script>
+        window.onload = function () {
+            // 1. Auto-fill Date
+            let d = new Date();
+            document.getElementById('currentDate').innerText = d.toLocaleDateString('es-ES');
+
+            // 2. Parse URL Params
+            const urlParams = new URLSearchParams(window.location.search);
+            const student = urlParams.get('student');
+            const school = urlParams.get('school'); // Or from localStorage
+
+            if (student) {
+                document.getElementById('studentName').innerText = student;
+            }
+
+            // Try URL first, then LocalStorage, then Default
+            if (school) {
+                document.getElementById('schoolName').innerText = school;
+            } else {
+                let savedSchool = localStorage.getItem('schoolName');
+                if (savedSchool) document.getElementById('schoolName').innerText = savedSchool;
+            }
+        };
+    </script>
+
+</body>
+
+</html>

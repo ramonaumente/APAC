@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Colección Completa: Viviendas del Mundo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0fdf4;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 3px solid white;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            z-index: 10;
+        }
+
+        .card-header {
+            height: 200px;
+            position: relative;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .card-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-header img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .title {
+            font-size: 1.4em;
+            font-weight: 800;
+            color: #1e293b;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.8em;
+            margin-bottom: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .data-row {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px dotted #cbd5e1;
+            padding: 4px 0;
+            font-size: 0.85em;
+        }
+
+        .icon {
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #334155;
+            margin-right: 5px;
+        }
+
+        .value {
+            color: #475569;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.75em;
+            padding: 5px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                display: block;
+            }
+
+            .card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                width: 45%;
+                float: left;
+                margin: 10px 2%;
+                box-shadow: none;
+            }
+
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="window.print()"
+        style="position:fixed; top:20px; right:20px; padding:10px 20px; background:#16a34a; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; z-index:100;">🖨️
+        IMPRIMIR COLECCIÓN (15)</button>
+
+    <!-- 1. IGLÚ (Ártico) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/iglu_realista_1767138800535.png"
+                alt="Iglú">
+        </div>
+        <div class="card-body">
+            <div class="title">Iglú</div>
+            <div class="subtitle">Ártico (Inuit)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Nieve compactada</span></div>
+            <div class="data-row"><span class="icon">🌡️</span><span class="label">Clima:</span><span
+                    class="value">Polar (-40ºC)</span></div>
+            <div class="data-row"><span class="icon">🐟</span><span class="label">Vida:</span><span class="value">Caza y
+                    pesca en hielo</span></div>
+            <div class="tag">💡 El aire atrapado en la nieve aísla del frío.</div>
+        </div>
+    </div>
+
+    <!-- 2. PALAFITO (Tropical) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/palafito_realista_1767138815584.png"
+                alt="Palafito">
+        </div>
+        <div class="card-body">
+            <div class="title">Palafito</div>
+            <div class="subtitle">Amazonas / Sudeste Asiático</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Bambú y Madera</span></div>
+            <div class="data-row"><span class="icon">🌊</span><span class="label">Entorno:</span><span
+                    class="value">Zonas inundables</span></div>
+            <div class="data-row"><span class="icon">🦟</span><span class="label">Ventaja:</span><span
+                    class="value">Evita humedad y bichos</span></div>
+            <div class="tag">💡 Se levanta sobre pilotes para que corra el agua.</div>
+        </div>
+    </div>
+
+    <!-- 3. YURTA (Estepa) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/yurta_realista_1767138829307.png"
+                alt="Yurta">
+        </div>
+        <div class="card-body">
+            <div class="title">Yurta</div>
+            <div class="subtitle">Mongolia (Estepas)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Fieltro de lana</span></div>
+            <div class="data-row"><span class="icon">⛺</span><span class="label">Tipo:</span><span
+                    class="value">Vivienda Nómada</span></div>
+            <div class="data-row"><span class="icon">🌪️</span><span class="label">Forma:</span><span
+                    class="value">Redonda (corta viento)</span></div>
+            <div class="tag">💡 Se monta y desmonta en pocas horas.</div>
+        </div>
+    </div>
+
+    <!-- 4. TIPI (Praderas) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/tipi_realista_1767138842160.png"
+                alt="Tipi">
+        </div>
+        <div class="card-body">
+            <div class="title">Tipi</div>
+            <div class="subtitle">Norteamérica (Sioux)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Piel de bisonte</span></div>
+            <div class="data-row"><span class="icon">🔥</span><span class="label">Ingenio:</span><span
+                    class="value">Salida de humo arriba</span></div>
+            <div class="data-row"><span class="icon">🏹</span><span class="label">Vida:</span><span
+                    class="value">Cazadores nómadas</span></div>
+            <div class="tag">💡 La entrada siempre mira al Este (sol naciente).</div>
+        </div>
+    </div>
+
+    <!-- 5. CASA CUEVA (Desierto) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/casa_cueva_realista_1767138862565.png"
+                alt="Casa Cueva">
+        </div>
+        <div class="card-body">
+            <div class="title">Casa Cueva</div>
+            <div class="subtitle">Andalucía / Túnez</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Excavada en arcilla</span></div>
+            <div class="data-row"><span class="icon">🌡️</span><span class="label">Temp:</span><span
+                    class="value">Constante (Bioclimática)</span></div>
+            <div class="data-row"><span class="icon">🏺</span><span class="label">Tradición:</span><span
+                    class="value">Vida subterránea</span></div>
+            <div class="tag">💡 Fresca en verano, cálida en invierno.</div>
+        </div>
+    </div>
+
+    <!-- 6. HANOK (Asia) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/hanok_realista_1767138875456.png"
+                alt="Hanok">
+        </div>
+        <div class="card-body">
+            <div class="title">Hanok</div>
+            <div class="subtitle">Corea (Montañas)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Madera, piedra, papel</span></div>
+            <div class="data-row"><span class="icon">🔥</span><span class="label">Sistema:</span><span
+                    class="value">Ondol (Suelo radiante)</span></div>
+            <div class="data-row"><span class="icon">🎎</span><span class="label">Vida:</span><span
+                    class="value">Respeto a la naturaleza</span></div>
+            <div class="tag">💡 El humo de la cocina calienta el suelo.</div>
+        </div>
+    </div>
+
+    <!-- 7. CABAÑA AFRICANA (Rondavel) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/caba_a_africana_realista_1767138891761.png"
+                alt="Cabaña Africana">
+        </div>
+        <div class="card-body">
+            <div class="title">Cabaña Africana</div>
+            <div class="subtitle">Sudáfrica (Rondavel)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Piedra, Barro y Paja</span></div>
+            <div class="data-row"><span class="icon">🎨</span><span class="label">Arte:</span><span
+                    class="value">Paredes pintadas geométricas</span></div>
+            <div class="data-row"><span class="icon">⭕</span><span class="label">Forma:</span><span
+                    class="value">Circular (Comunidad)</span></div>
+            <div class="tag">💡 El techo de paja mantiene el interior muy fresco.</div>
+        </div>
+    </div>
+
+    <!-- 8. PAGODA (China) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/pagoda_realista_1767138905035.png"
+                alt="Pagoda">
+        </div>
+        <div class="card-body">
+            <div class="title">Pagoda</div>
+            <div class="subtitle">China / Este de Asia</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Madera y Ladrillo</span></div>
+            <div class="data-row"><span class="icon">🎎</span><span class="label">Filosofía:</span><span
+                    class="value">Feng Shui (Armonía)</span></div>
+            <div class="data-row"><span class="icon">🆙</span><span class="label">Altura:</span><span
+                    class="value">Varios pisos (Torre)</span></div>
+            <div class="tag">💡 Los aleros curvos alejan el agua de lluvia de las paredes.</div>
+        </div>
+    </div>
+
+    <!-- 9. TRULLO (Europa) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/trullo_realista_1767138925785.png"
+                alt="Trullo">
+        </div>
+        <div class="card-body">
+            <div class="title">Trullo</div>
+            <div class="subtitle">Italia (Apulia)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span
+                    class="value">Piedra caliza (seco)</span></div>
+            <div class="data-row"><span class="icon">🍦</span><span class="label">Forma:</span><span class="value">Techo
+                    cónico gris</span></div>
+            <div class="data-row"><span class="icon">🔮</span><span class="label">Símbolo:</span><span
+                    class="value">Pintados en el techo</span></div>
+            <div class="tag">💡 Se construían sin cemento para desmontarlos rápido.</div>
+        </div>
+    </div>
+
+    <!-- 10. CASA FLOTANTE (Agua) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/casa_flotante_realista_1767138941425.png"
+                alt="Casa Flotante">
+        </div>
+        <div class="card-body">
+            <div class="title">Casa Flotante</div>
+            <div class="subtitle">Holanda / Vietnam</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Base:</span><span
+                    class="value">Hormigón hueco o botes</span></div>
+            <div class="data-row"><span class="icon">⚓</span><span class="label">Vida:</span><span class="value">Sobre
+                    canales o bahías</span></div>
+            <div class="data-row"><span class="icon">🏙️</span><span class="label">Razón:</span><span
+                    class="value">Falta de espacio en tierra</span></div>
+            <div class="tag">💡 ¡Puedes cambiar de vecinos moviendo la casa!</div>
+        </div>
+    </div>
+
+    <!-- 11. MINKA (Japón) -->
+    <div class="card">
+        <div class="card-header">
+            <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/minka_realista_1767138955925.png"
+                alt="Minka">
+        </div>
+        <div class="card-body">
+            <div class="title">Minka</div>
+            <div class="subtitle">Japón (Alpes Japoneses)</div>
+            <div class="data-row"><span class="icon">🧱</span><span class="label">Techo:</span><span class="value">Paja
+                    muy gruesa</span></div>
+            <div class="data-row"><span class="icon">🤲</span><span class="label">Forma:</span><span
+                    class="value">Gassho (Manos rezando)</span></div>
+            <div class="data-row"><span class="icon">🍵</span><span class="label">Interior:</span><span
+                    class="value">Tatami y fuego central</span></div>
+            <div class="tag">💡 El techo inclinado hace resbalar la nieve pesada.</div>
+        </div>
+    </div>
+
+</body>
+
+<!-- 12. ADOBE PUEBLO (EEUU) -->
+<div class="card">
+    <div class="card-header">
+        <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/adobe_pueblo_realista_1767139154725.png"
+            alt="Adobe Pueblo">
+    </div>
+    <div class="card-body">
+        <div class="title">Adobe Pueblo</div>
+        <div class="subtitle">Nuevo México (Indios Pueblo)</div>
+        <div class="data-row"><span class="icon">🧱</span><span class="label">Material:</span><span class="value">Adobe
+                (Barro y Paja)</span></div>
+        <div class="data-row"><span class="icon">☀️</span><span class="label">Clima:</span><span class="value">Desierto
+                (Seco)</span></div>
+        <div class="data-row"><span class="icon">🪜</span><span class="label">Acceso:</span><span
+                class="value">Escaleras de mano</span></div>
+        <div class="tag">💡 Las paredes gruesas mantienen el fresco dentro.</div>
+    </div>
+</div>
+
+<!-- 13. ISBA RUSA (Rusia) -->
+<div class="card">
+    <div class="card-header">
+        <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/isba_rusa_realista_1767139166594.png"
+            alt="Isba Rusa">
+    </div>
+    <div class="card-body">
+        <div class="title">Isba</div>
+        <div class="subtitle">Rusia (Bosques Taiga)</div>
+        <div class="data-row"><span class="icon">🌲</span><span class="label">Material:</span><span
+                class="value">Troncos de madera</span></div>
+        <div class="data-row"><span class="icon">❄️</span><span class="label">Techo:</span><span class="value">A dos
+                aguas (Nieve)</span></div>
+        <div class="data-row"><span class="icon">🔥</span><span class="label">Corazón:</span><span class="value">Estufa
+                gigante (Pech)</span></div>
+        <div class="tag">💡 Las ventanas decoradas ahuyentan malos espíritus.</div>
+    </div>
+</div>
+
+<!-- 14. JAIMA BEDUINA (Desierto) -->
+<div class="card">
+    <div class="card-header">
+        <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/jaima_beduina_realista_1767139180040.png"
+            alt="Jaima Beduina">
+    </div>
+    <div class="card-body">
+        <div class="title">Jaima</div>
+        <div class="subtitle">Sahara / Arabia (Nómadas)</div>
+        <div class="data-row"><span class="icon">🐐</span><span class="label">Tela:</span><span class="value">Pelo de
+                cabra negra</span></div>
+        <div class="data-row"><span class="icon">🌬️</span><span class="label">Ventaja:</span><span class="value">Tejido
+                transpirable</span></div>
+        <div class="data-row"><span class="icon">☕</span><span class="label">Vida:</span><span
+                class="value">Hospitalidad (Té)</span></div>
+        <div class="tag">💡 Se moja y se tensa, volviéndose impermeable.</div>
+    </div>
+</div>
+
+<!-- 15. CASA DE TOTORA (Uros) -->
+<div class="card">
+    <div class="card-header">
+        <img src="C:/Users/MSI/.gemini/antigravity/brain/0596ad6f-b271-4e9d-ae0c-ed31e42bb109/casa_totora_realista_1767139195071.png"
+            alt="Casa Totora">
+    </div>
+    <div class="card-body">
+        <div class="title">Casa de Totora</div>
+        <div class="subtitle">Lago Titicaca (Uros)</div>
+        <div class="data-row"><span class="icon">🌾</span><span class="label">Material:</span><span class="value">Juncos
+                secos (Totora)</span></div>
+        <div class="data-row"><span class="icon">🏝️</span><span class="label">Suelo:</span><span class="value">Isla
+                flotante artificial</span></div>
+        <div class="data-row"><span class="icon">🚣</span><span class="label">Transporte:</span><span
+                class="value">Barcos de totora</span></div>
+        <div class="tag">💡 Hay que añadir juncos nuevos cada 2 semanas.</div>
+    </div>
+</div>
+
+</body>
+
+</html>

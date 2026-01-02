@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GUÍA: CSI Forense (Premium)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: justify;
+        }
+
+        /* DISEÑO ACADEMIA HOLMES (Violeta) */
+        header {
+            border-bottom: 4px solid #a855f7;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #7e22ce;
+            font-weight: 800;
+            font-size: 2.2em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-left: 6px solid #a855f7;
+            padding-left: 15px;
+            color: #7e22ce;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #faf5ff;
+            padding: 10px 15px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #e9d5ff;
+            padding: 10px;
+        }
+
+        .rubric-table th {
+            background: #a855f7;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .tip-box {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '🕵️ CONSEJO DE AGENTE:';
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .adapt-box {
+            background: #fdf4ff;
+            border: 2px dashed #a855f7;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .session-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f3e8ff;
+            padding-bottom: 15px;
+        }
+
+        .session-title {
+            font-weight: 800;
+            color: #7e22ce;
+            font-size: 1.1em;
+            text-decoration: underline;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #a855f7;
+            color: #a855f7;
+            padding: 8px 15px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .print-btn:hover {
+            opacity: 1;
+            background: #a855f7;
+            color: white;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>CSI: LABORATORIO FORENSE</h1>
+            <div style="color: #666; margin-top: 10px;">Trimestre 2 | Programa ACADEMIA HOLMES</div>
+        </div>
+        <div style="font-size: 3em;">🔬</div>
+    </header>
+
+    <!-- 1. FICHA TÉCNICA -->
+    <h2>1. Ficha Técnica</h2>
+    <table class="rubric-table">
+        <tr>
+            <th style="width: 25%;">Nivel</th>
+            <td>Primaria (4º - 6º)</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>1 Trimestre (10-12 Sesiones)</td>
+        </tr>
+        <tr>
+            <th>Áreas</th>
+            <td>Ciencias Naturales, Matemáticas, Plástica</td>
+        </tr>
+        <tr>
+            <th>Producto Final</th>
+            <td>Informe Pericial completo y resolución del caso "El Robo de la Merienda".</td>
+        </tr>
+    </table>
+
+    <!-- 2. JUSTIFICACIÓN -->
+    <h2>2. Fundamentación Pedagógica</h2>
+    <p>La ciencia forense es la aplicación práctica del método científico: observar, preguntar, experimentar y concluir.
+        En este taller, los alumnos dejan de ser estudiantes para convertirse en miembros del CSI (Cuerpo de Seguridad e
+        Investigación). Aprenden química y biología sin darse cuenta, impulsados por la emoción de resolver un "crimen"
+        (como quién se comió el pastel del profesor).</p>
+
+    <h2>3. Concreción Curricular</h2>
+    <div class="tip-box" style="border-color: #a855f7; background: #fff;">
+        <p><strong>Competencias Clave Trabajadas:</strong></p>
+        <ul>
+            <li><strong>Competencia STEM (Ciencia):</strong> Realizar experimentos sencillos (huellas, tintas) y sacar
+                conclusiones basadas en pruebas, no en opiniones.</li>
+            <li><strong>Competencia Digital (Uso de herramientas):</strong> Usar la tablet o cámara para fotografiar
+                pruebas sin contaminarlas ("Hacer fotos científicas").</li>
+            <li><strong>Competencia Ciudadana (Justicia):</strong> Entender que acusar a alguien requiere pruebas reales
+                y que todos somos inocentes hasta que se demuestre lo contrario.</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Saberes Básicos (Lo que aprendemos):</strong></p>
+        <table style="width:100%; font-size: 0.9em; border-collapse: collapse;">
+            <tr>
+                <td style="vertical-align: top; padding-right: 15px;">
+                    <strong>🔬 Ciencias Naturales:</strong>
+                    <ul>
+                        <li>El cuerpo humano: la piel y las huellas dactilares (únicas en cada persona).</li>
+                        <li>La materia: separar mezclas (cromatografía de tintas).</li>
+                        <li>Uso de instrumentos: lupa, pincel, cinta métrica.</li>
+                    </ul>
+                </td>
+                <td style="vertical-align: top;">
+                    <strong>⚖️ Valores Cívicos:</strong>
+                    <ul>
+                        <li>La verdad vs. el rumor.</li>
+                        <li>El respeto a las normas y leyes.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>4. Materiales</h2>
+    <ul>
+        <li>Polvos de talco o cacao en polvo (para revelar huellas).</li>
+        <li>Celofán ancho transparente.</li>
+        <li>Papel de filtro (cafetera) y rotuladores al agua.</li>
+        <li>Guantes de látex/vinilo y mascarillas (¡Indispensable para el disfraz!).</li>
+    </ul>
+
+    <h2>5. Secuencia Didáctica Detallada</h2>
+    <div class="session-block">
+        <div class="session-title">Fase 1: La Escena del Crimen (Sesiones 1-3)</div>
+        <p>Llegamos y acordonamos la zona con cinta policial.
+            <strong>Regla de Oro:</strong> "No tocar nada sin guantes". Aprendemos a observar: ¿Hay pisadas? ¿Algo roto?
+            Hacemos un croquis (dibujo del lugar) y marcamos las pistas con números.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 2: El Laboratorio de Huellas (Sesiones 4-7)</div>
+        <p>¿Quién ha tocado este vaso? Aprendemos que nuestros dedos tienen dibujos únicos (arcos, bucles).
+            <strong>Práctica:</strong> Mancharse el dedo con tinta y estamparlo en la ficha policial. Luego, buscar
+            huellas invisibles en clase usando pinceles y talco.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 3: El Misterio de la Tinta (Sesiones 8-10)</div>
+        <p>Han dejado una nota anónima. ¿Qué rotulador se usó?
+            <strong>Experimento:</strong> "Cromatografía". Pintamos un punto en papel de filtro y lo mojamos. Los
+            colores se separan (el negro se convierte en azul, rojo, verde...). Comparamos con los sospechosos.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 4: El Juicio Final (Sesiones 11-12)</div>
+        <p>Reunimos todas las pruebas. "La huella coincide con Pedro y la tinta es de su rotulador". El equipo redacta
+            el Informe Final y explica quién fue y cómo lo descubrieron.</p>
+    </div>
+
+    <h2>6. Medidas de Inclusión y Desafío (Altas Capacidades)</h2>
+    <div class="adapt-box">
+        <strong>Nivel 1: Ampliación (Para todos)</strong>
+        <p>Analizar pisadas en el patio de arena. ¿Quién iba corriendo y quién andando? (Si corres, la huella es más
+            profunda en la punta).</p>
+
+        <br><strong>Nivel 2: Profundización (Reto Pensar Más)</strong>
+        <p><strong>El ADN:</strong> Explicar que es el "libro de instrucciones" de cada persona. Hacer una extracción de
+            ADN de un plátano o fresa (con alcohol y jabón) para verlo físicamente (es como un moco blanco).</p>
+
+        <br><strong>Nivel 3: Transferencia (Mundo Real)</strong>
+        <p>Falsificación de Arte. ¿Cómo saben si un cuadro es verdadero? Investigar cómo la ciencia ayuda a descubrir
+            cuadros falsos (rayos X, análisis de pintura).</p>
+    </div>
+
+    <h2>7. Evaluación (Rúbrica)</h2>
+    <p>Valoramos la precisión científica y el razonamiento lógico.</p>
+    <table class="rubric-table">
+        <tr>
+            <th>Qué valoramos</th>
+            <th>¡Experto! (10-9)</th>
+            <th>¡Muy bien! (8-6)</th>
+            <th>En camino (5-1)</th>
+        </tr>
+        <tr>
+            <td><strong>Toma de Pruebas (STEM)</strong></td>
+            <td>Recoge huellas limpias y enteras. Hace la cromatografía perfectamente y entiende por qué se separan los
+                colores.</td>
+            <td>Recoge huellas un poco borrosas. Hace el experimento pero le cuesta explicar qué ha pasado.</td>
+            <td>Las huellas son manchurrones. No sigue los pasos del experimento.</td>
+        </tr>
+        <tr>
+            <td><strong>Deducción Lógica (Detective)</strong></td>
+            <td>Une las pistas (A + B) para encontrar al culpable. Sus concusiones tienen sentido y se basan en datos.
+            </td>
+            <td>Acusa al sospechoso correcto pero le cuesta explicar por qué está seguro.</td>
+            <td>Acusa "porque me cae mal" o al azar, sin mirar las pruebas.</td>
+        </tr>
+        <tr>
+            <td><strong>Orden y Limpieza</strong></td>
+            <td>Trabaja con muchísimo cuidado para no contaminar las pruebas. Usa guantes y limpia todo al terminar.
+            </td>
+            <td>Es cuidadoso a veces, pero se le olvida ponerse los guantes o deja material sucio.</td>
+            <td>Es descuidado, toca todo y estropea las pruebas.</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

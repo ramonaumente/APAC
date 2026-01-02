@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cartas de Hábitats Extremos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #eee;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 450px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 8px solid #333;
+            position: relative;
+        }
+
+        .card-header {
+            height: 80px;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.4em;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .stat-box {
+            background: #f4f4f4;
+            border-left: 5px solid #666;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            display: block;
+            font-size: 0.8em;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        /* PLANETA LAVA */
+        .lava {
+            border-color: #d32f2f;
+        }
+
+        .lava .card-header {
+            background: #d32f2f;
+        }
+
+        .lava .stat-box {
+            border-color: #d32f2f;
+            background: #ffebee;
+        }
+
+        /* PLANETA HIELO */
+        .hielo {
+            border-color: #1976d2;
+        }
+
+        .hielo .card-header {
+            background: #1976d2;
+        }
+
+        .hielo .stat-box {
+            border-color: #1976d2;
+            background: #e3f2fd;
+        }
+
+        /* PLANETA GAS */
+        .gas {
+            border-color: #7b1fa2;
+        }
+
+        .gas .card-header {
+            background: #7b1fa2;
+        }
+
+        .gas .stat-box {
+            border-color: #7b1fa2;
+            background: #f3e5f5;
+        }
+
+        /* PLANETA NOCTURNO */
+        .noche {
+            border-color: #212121;
+        }
+
+        .noche .card-header {
+            background: #212121;
+        }
+
+        .noche .stat-box {
+            border-color: #212121;
+            background: #e0e0e0;
+        }
+
+        .danger-warning {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            border: 2px dashed red;
+            padding: 5px;
+            transform: rotate(-2deg);
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .card-container {
+                display: block;
+            }
+
+            .card {
+                float: left;
+                margin: 10px;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button
+        style="position:fixed; top:20px; right:20px; padding:10px 20px; background:#f97316; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; z-index:1000;"
+        onclick="window.print()" class="no-print">🖨️ IMPRIMIR CARTAS</button>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .card-container {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .card {
+                margin: 5px;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                /* Optimize for A4 */
+                width: 45%;
+            }
+        }
+    </style>
+
+    <h1 style="text-align:center; margin-bottom:40px;">BARAJA DE HÁBITATS EXTREMOS (RECORTABLE)</h1>
+
+    <div class="card-container">
+
+        <!-- CARTA 1 -->
+        <div class="card lava">
+            <div class="card-header">
+                <h2>Planeta Pyros</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Temperatura Media</span>
+                    <span class="stat-value">85ºC (Muy Caliente)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">Roca volcánica y ceniza</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Agua</span>
+                    <span class="stat-value">Escasa, solo vapor subterráneo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Atmósfera</span>
+                    <span class="stat-value">Densa, mucho humo</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Erupciones Frecuentes</div>
+            </div>
+        </div>
+
+        <!-- CARTA 2 -->
+        <div class="card hielo">
+            <div class="card-header">
+                <h2>Luna Cristalia</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Temperatura Media</span>
+                    <span class="stat-value">-60ºC (Congelación)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">Hielo liso y cristales cortantes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Luz</span>
+                    <span class="stat-value">Muy brillante (Reflejos)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Vegetación</span>
+                    <span class="stat-value">Musgo bajo el hielo</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Resbaladizo</div>
+            </div>
+        </div>
+
+        <!-- CARTA 3 -->
+        <div class="card gas">
+            <div class="card-header">
+                <h2>Nebulosa Aérea</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Gravedad</span>
+                    <span class="stat-value">Muy baja (Todo flota)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">No existe (Caída infinita)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Viento</span>
+                    <span class="stat-value">Huracanes constantes (200km/h)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Alimento</span>
+                    <span class="stat-value">Insectos voladores gigantes</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Corrientes de Aire</div>
+            </div>
+        </div>
+
+        <!-- CARTA 4 -->
+        <div class="card noche">
+            <div class="card-header">
+                <h2>Caverna Profunda</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Luz</span>
+                    <span class="stat-value">0% (Oscuridad Total)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Humedad</span>
+                    <span class="stat-value">100% (Todo mojado)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Sonido</span>
+                    <span class="stat-value">Mucho eco</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Espacio</span>
+                    <span class="stat-value">Túneles estrechos</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Depredadores invisibles</div>
+            </div>
+        </div>
+
+        <!-- CARTA 1 (COPIA) -->
+        <div class="card lava">
+            <div class="card-header">
+                <h2>Planeta Pyros</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Temperatura Media</span>
+                    <span class="stat-value">85ºC (Muy Caliente)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">Roca volcánica y ceniza</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Agua</span>
+                    <span class="stat-value">Escasa, solo vapor subterráneo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Atmósfera</span>
+                    <span class="stat-value">Densa, mucho humo</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Erupciones Frecuentes</div>
+            </div>
+        </div>
+
+        <!-- CARTA 2 (COPIA) -->
+        <div class="card hielo">
+            <div class="card-header">
+                <h2>Luna Cristalia</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Temperatura Media</span>
+                    <span class="stat-value">-60ºC (Congelación)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">Hielo liso y cristales cortantes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Luz</span>
+                    <span class="stat-value">Muy brillante (Reflejos)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Vegetación</span>
+                    <span class="stat-value">Musgo bajo el hielo</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Resbaladizo</div>
+            </div>
+        </div>
+
+        <!-- CARTA 3 (COPIA) -->
+        <div class="card gas">
+            <div class="card-header">
+                <h2>Nebulosa Aérea</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Gravedad</span>
+                    <span class="stat-value">Muy baja (Todo flota)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Suelo</span>
+                    <span class="stat-value">No existe (Caída infinita)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Viento</span>
+                    <span class="stat-value">Huracanes constantes (200km/h)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Alimento</span>
+                    <span class="stat-value">Insectos voladores gigantes</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Corrientes de Aire</div>
+            </div>
+        </div>
+
+        <!-- CARTA 4 (COPIA) -->
+        <div class="card noche">
+            <div class="card-header">
+                <h2>Caverna Profunda</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-box">
+                    <span class="stat-label">Luz</span>
+                    <span class="stat-value">0% (Oscuridad Total)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Humedad</span>
+                    <span class="stat-value">100% (Todo mojado)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Sonido</span>
+                    <span class="stat-value">Mucho eco</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Espacio</span>
+                    <span class="stat-value">Túneles estrechos</span>
+                </div>
+                <div class="danger-warning">⚠️ PELIGRO: Depredadores invisibles</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

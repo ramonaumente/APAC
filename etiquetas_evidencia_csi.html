@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ETIQUETAS EVIDENCIA CSI</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #222;
+            padding: 20px;
+        }
+
+        .sheet {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 10mm;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .label {
+            border: 4px solid #d11212;
+            padding: 15px;
+            position: relative;
+            background: #fff;
+        }
+
+        .header {
+            background: #d11212;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            margin: -15px -15px 15px -15px;
+            text-transform: uppercase;
+        }
+
+        .row {
+            margin-bottom: 12px;
+            border-bottom: 1px dotted #999;
+            padding-bottom: 2px;
+        }
+
+        .chain {
+            font-size: 0.8em;
+            margin-top: 15px;
+            border-top: 2px solid black;
+            padding-top: 5px;
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            transform: rotate(-20deg);
+            opacity: 0.6;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .sheet {
+                width: 100%;
+                margin: 0;
+                padding: 10mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sheet">
+
+        <!-- Generamos 8 etiquetas idénticas -->
+        <script>
+            for (let i = 0; i < 8; i++) {
+                document.write(`
+            <div class="label">
+                <div class="header">⚠️ EVIDENCIA FORENSE ⚠️</div>
+                
+                <div class="row"><strong>CASO Nº:</strong> ___________________</div>
+                <div class="row"><strong>Nº MUESTRA:</strong> ______________</div>
+                <div class="row"><strong>DESCRIPCIÓN:</strong></div>
+                <div class="row" style="height:20px;"></div>
+                
+                <div class="row"><strong>RECOGIDO POR:</strong> ____________</div>
+                <div class="row"><strong>FECHA:</strong> ____/____ HORA: ____:____</div>
+                <div class="row"><strong>LUGAR:</strong> ____________________</div>
+
+                <div class="chain">
+                    <strong>CADENA DE CUSTODIA:</strong><br>
+                    <span style="font-size:0.9em;">FIRMA: _________________</span>
+                </div>
+
+                <div class="stamp">CSI<br>LAB</div>
+            </div>
+            `);
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>

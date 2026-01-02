@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diploma Detective - Academia Holmes</title>
+    <!-- Importar fuente de firma -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    </style>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .diploma-border {
+            border: 15px solid #3e2723;
+            /* Marrón oscuro */
+            padding: 30px;
+            position: relative;
+            background: #fff8e1;
+            /* Crema */
+            width: 260mm;
+            height: 180mm;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Distribuye el espacio verticalmente */
+            align-items: center;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .corner {
+            position: absolute;
+            font-size: 3em;
+            color: #3e2723;
+        }
+
+        .tl {
+            top: 10px;
+            left: 10px;
+        }
+
+        .tr {
+            top: 10px;
+            right: 10px;
+        }
+
+        .bl {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .br {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Contenedor del Título y Escuela */
+        .header-section {
+            margin-top: 10px;
+            width: 80%;
+        }
+
+        #school-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #8d6e63;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            min-height: 1.2em;
+            /* Reserva espacio */
+            display: none;
+            /* Se muestra si hay texto */
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: #3e2723;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #5d4037;
+            font-style: italic;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            font-size: 1.3em;
+            line-height: 1.4;
+            margin: 0 40px;
+            color: #333;
+            flex-grow: 1;
+            /* Ocupa el espacio central */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* CAMPO INTERACTIVO PARA EL NOMBRE */
+        .student-name-input {
+            font-size: 3em;
+            font-family: 'Great Vibes', cursive;
+            /* Estilo manuscrito elegante */
+            color: #d84315;
+            border: none;
+            border-bottom: 2px solid #3e2723;
+            background: transparent;
+            text-align: center;
+            width: 90%;
+            margin: 15px auto;
+            display: block;
+            outline: none;
+        }
+
+        .student-name-input::placeholder {
+            font-family: 'Times New Roman', serif;
+            color: #ffccbc;
+            font-size: 0.5em;
+            opacity: 0.7;
+            vertical-align: middle;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sig-block {
+            text-align: center;
+            width: 250px;
+        }
+
+        .sig-line-draw {
+            border-bottom: 2px solid #3e2723;
+            height: 60px;
+            /* Altura para la firma */
+            margin-bottom: 5px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .fake-signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #333;
+            transform: rotate(-5deg);
+        }
+
+        .sig-label {
+            font-weight: bold;
+            font-size: 1em;
+            color: #3e2723;
+        }
+
+        .seal {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 110px;
+            background: #d84315;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 5px double white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        /* BOTÓN FLOTANTE */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            background: #3e2723;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                display: block;
+            }
+
+            .diploma-border {
+                box-shadow: none;
+                margin: 0 auto;
+                width: 100%;
+                height: 100vh;
+                border: 10px solid #3e2723;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .student-name-input {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn" onclick="window.print()">🖨️ IMPRIMIR DIPLOMA</button>
+
+    <div class="diploma-border">
+        <div class="corner tl">🕵️</div>
+        <div class="corner tr">🔍</div>
+        <div class="corner bl">👣</div>
+        <div class="corner br">🗝️</div>
+
+        <div class="header-section">
+            <div id="school-display"></div> <!-- Nombre del colegio aquí -->
+            <h1>ACADEMIA HOLMES</h1>
+            <h2>Excelencia en Investigación y Lógica</h2>
+        </div>
+
+        <div class="content">
+            Por haber demostrado una mente afilada, una observación meticulosa y una valentía inquebrantable, se otorga
+            el título de:
+            <br>
+            <strong style="font-size:1.8em; text-transform:uppercase; display:block; margin: 10px 0;">DETECTIVE
+                JEFE</strong>
+            a:
+
+            <!-- INPUT INTERACTIVO -->
+            <input type="text" class="student-name-input" placeholder="(Escribe el nombre aquí)" value="">
+
+            Por completar con éxito los 3 Módulos de Entrenamiento:<br>
+            Criptografía, Forense y Operaciones de Campo.
+        </div>
+
+        <div class="seal">
+            CERTIFICADO<br>OFICIAL<br>AACC
+        </div>
+
+        <div class="signatures">
+            <!-- Firma Sherlock -->
+            <div class="sig-block">
+                <div class="sig-line-draw">
+                    <span class="fake-signature">Sherlock Holmes</span>
+                </div>
+                <div class="sig-label">Detective Consultor</div>
+            </div>
+
+            <!-- Firma Profe (Vacia) -->
+            <div class="sig-block">
+                <div class="sig-line-draw">
+                    <!-- Espacio vacio para firmar -->
+                </div>
+                <div class="sig-label">Firma del Director/a (Profesor)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const school = params.get('school');
+
+            if (school && school !== "null") {
+                // Inyectar texto en el div existente en lugar de crear uno absoluto
+                const schoolDisplay = document.getElementById('school-display');
+                if (schoolDisplay) {
+                    schoolDisplay.innerText = school;
+                    schoolDisplay.style.display = 'block';
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

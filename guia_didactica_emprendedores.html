@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GUÍA: Emprendedores (Premium BW)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: justify;
+        }
+
+        /* DISEÑO EMPRENDEDORES (Naranja) */
+        header {
+            border-bottom: 4px solid #f97316;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #c2410c;
+            font-weight: 800;
+            font-size: 2.2em;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            border-left: 6px solid #f97316;
+            padding-left: 15px;
+            color: #c2410c;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #fff7ed;
+            padding: 10px 15px;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #fed7aa;
+            padding: 10px;
+        }
+
+        .rubric-table th {
+            background: #f97316;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .tip-box {
+            background: #fff7ed;
+            border: 2px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '💡 CONSEJO:';
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .adapt-box {
+            background: #fafafa;
+            border: 2px dashed #666;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .session-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+
+        .session-title {
+            font-weight: 800;
+            color: #000;
+            font-size: 1.1em;
+            text-decoration: underline;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #333;
+            padding: 8px 15px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .print-btn:hover {
+            opacity: 1;
+            background: #333;
+            color: white;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Guía</button>
+
+    <header>
+        <div>
+            <h1>Feria de Inventos</h1>
+            <div style="color: #444; margin-top: 5px; font-weight: 600;">Trimestre 3 | Programa EXPLORADORES</div>
+        </div>
+        <div style="font-size: 3em;">💡</div>
+    </header>
+
+    <h2>1. Ficha Técnica</h2>
+    <table class="rubric-table">
+        <tr>
+            <th style="width: 25%;">Nivel</th>
+            <td>Primaria (4º - 6º)</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>1 Trimestre</td>
+        </tr>
+        <tr>
+            <th>Áreas</th>
+            <td>Matemáticas (Financiera), Emprendimiento</td>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <td>Stand en la Feria y Presentación de Producto.</td>
+        </tr>
+    </table>
+
+    <h2>2. Fundamentación Pedagógica</h2>
+    <p>Aprender a emprender no es solo ganar dinero; es aprender a transformar ideas en realidad. Este proyecto enseña
+        matemáticas útiles para la vida (presupuestos, ahorro) y valores importantes como la ética (no todo vale) y el
+        esfuerzo. Queremos alumnos que sepan resolver problemas reales y trabajar juntos para mejorar su entorno.</p>
+
+    <h2>3. Concreción Curricular</h2>
+    <div class="tip-box" style="border-color: #f97316; background: #fff;">
+        <p><strong>Competencias Clave Trabajadas:</strong></p>
+        <ul>
+            <li><strong>Competencia Emprendedora (Ideas en acción):</strong> Planificar un proyecto paso a paso y ser
+                capaz de llevarlo a cabo.</li>
+            <li><strong>Competencia STEM (Matemáticas):</strong> Usar las matemáticas para calcular precios, gastos y
+                ganancias (decimales y porcentajes).</li>
+            <li><strong>Competencia Ciudadana (Valores):</strong> Entender el valor del dinero, el consumo responsable y
+                la honestidad en los negocios.</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Saberes Básicos (Lo que aprendemos):</strong></p>
+        <table style="width:100%; font-size: 0.9em; border-collapse: collapse;">
+            <tr>
+                <td style="vertical-align: top; padding-right: 15px;">
+                    <strong>🧮 Matemáticas:</strong>
+                    <ul>
+                        <li>Educación Financiera: ¿Qué son ingresos, gastos y ahorro?</li>
+                        <li>Sumas, restas y porcentajes con dinero (euros y céntimos).</li>
+                        <li>Resolver problemas de compras y ventas.</li>
+                    </ul>
+                </td>
+                <td style="vertical-align: top;">
+                    <strong>🌍 Valores Cívicos:</strong>
+                    <ul>
+                        <li>Negocios que ayudan a la gente (emprendimiento social).</li>
+                        <li>Consumo responsable: comprar solo lo necesario.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>4. Materiales</h2>
+    <ul>
+        <li>Lienzo de Negocio (Plantilla para dibujar la idea).</li>
+        <li>Dinero de juguete ("Dólares de Aula").</li>
+        <li>Materiales reciclados para hacer prototipos (inventos de cartón).</li>
+        <li>Hoja de Cálculo o papel para hacer las cuentas.</li>
+    </ul>
+
+    <h2>5. Secuencia Didáctica Detallada</h2>
+    <div class="session-block">
+        <div class="session-title">Fase 1: La Gran Idea (Sesiones 1-3)</div>
+        <p>Lluvia de ideas. No buscamos "vender cosas", sino "solucionar problemas".
+            <strong>Juego:</strong> "El Mapa de la Empatía". ¿Qué le molesta a la gente? (ej. nos aburrimos en el
+            recreo). Nuestra empresa nacerá para arreglar eso.
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 2: Las Cuentas Claras (Sesiones 4-7)</div>
+        <p>Matemáticas divertidas. Calculamos costes. ¿Cuánto cuesta fabricar nuestro invento? ¿A cuánto lo vendemos?
+            <strong>El Reto:</strong> "El Punto de Equilibrio". ¿Cuántos tenemos que vender para empezar a ganar dinero
+            y no perder?
+        </p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 3: ¡A fabricar! (Sesiones 8-10)</div>
+        <p>Creamos el primer modelo (prototipo) y preparamos la publicidad. Grabamos un anuncio de TV corto y diseñamos
+            un logotipo chulo.</p>
+    </div>
+    <div class="session-block">
+        <div class="session-title">Fase 4: La Feria de Inventos (Sesiones 11-12)</div>
+        <p><strong>"Shark Tank Escolar":</strong> Feria de muestras. Los alumnos presentan su proyecto a los
+            "inversores" (profesores o alumnos mayores). Deben convencerles con buenos argumentos y datos, no solo con
+            palabras bonitas.</p>
+    </div>
+
+    <h2>6. Medidas de Inclusión y Desafío (Altas Capacidades)</h2>
+    <div class="adapt-box">
+        <strong>Nivel 1: Ampliación (Para todos)</strong>
+        <p>Inventar un discurso de 1 minuto ("Elevator Pitch") para vender su idea en lo que dura un viaje de ascensor.
+        </p>
+
+        <br><strong>Nivel 2: Profundización (Reto Pensar Más)</strong>
+        <p>Introducción a las Finanzas Avanzadas. Hablar de <strong>préstamos e intereses</strong>. ¿Qué pasa si pido
+            dinero al banco escolar? ¿Cuánto tengo que devolver de más?</p>
+
+        <br><strong>Nivel 3: Transferencia (Mundo Real)</strong>
+        <p>Emprendimiento Solidario. Investigar una ONG real y proponer una idea para ayudarles, donde el beneficio no
+            sea dinero, sino ayuda social.</p>
+    </div>
+
+    <h2>7. Evaluación (Rúbrica)</h2>
+    <p>Valoramos si la idea es posible, si las cuentas están bien hechas y cómo lo cuentan.</p>
+    <table class="rubric-table">
+        <tr>
+            <th>Qué valoramos</th>
+            <th>¡Experto! (10-9)</th>
+            <th>¡Muy bien! (8-6)</th>
+            <th>En camino (5-1)</th>
+        </tr>
+        <tr>
+            <td><strong>Planificación (Idea)</strong></td>
+            <td>La idea es realista y útil. Ha calculado bien todos los gastos y sabe cómo ganar dinero.</td>
+            <td>La idea es buena pero los cálculos son un poco optimistas o irreales.</td>
+            <td>La idea es imposible de realizar. No ha pensado en los gastos.</td>
+        </tr>
+        <tr>
+            <td><strong>Matemáticas (Cuentas)</strong></td>
+            <td>El presupuesto es perfecto. No hay fallos en las sumas, restas ni porcentajes.</td>
+            <td>Tiene pequeños fallos en las operaciones o confunde algunos conceptos.</td>
+            <td>Hay muchos errores de cálculo que hacen que el proyecto no funcione.</td>
+        </tr>
+        <tr>
+            <td><strong>Comunicación (Venta)</strong></td>
+            <td>Presenta con seguridad, convence y responde muy bien a las preguntas.</td>
+            <td>Explica el proyecto correctamente pero le falta un poco de "chispa" o seguridad.</td>
+            <td>Le cuesta explicar de qué trata su negocio o se pone muy nervioso.</td>
+        </tr>
+    </table>
+
+</body>

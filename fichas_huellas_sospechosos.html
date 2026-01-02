@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fichas: Sospechosos y Huellas</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: #fff;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #555;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .suspect-card {
+            border: 2px solid #000;
+            width: 45%;
+            padding: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            background: #f9f9f9;
+            position: relative;
+        }
+
+        .mugshot {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            margin: 0 auto 10px auto;
+        }
+
+        .data-row {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .fingerprint-box {
+            border: 1px dashed #666;
+            height: 80px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background: white;
+            position: relative;
+        }
+
+        /* Hidden UV clue effect simulation */
+        .uv-clue {
+            color: #fdf4ff;
+            /* Almost invisible */
+        }
+
+        .uv-clue:hover {
+            color: magenta;
+            /* Reveals on hover (or imagining UV light) */
+            text-shadow: 0 0 5px magenta;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>📂 BASE DE DATOS: SOSPECHOSOS</h1>
+        <p>LABORATORIO CSI | ANÁLISIS DACTILAR & RASTROS UV</p>
+    </div>
+
+    <div class="card-grid">
+        <!-- Suspect 1 -->
+        <div class="suspect-card">
+            <div class="mugshot">👨‍🔬</div>
+            <div class="data-row"><strong>NOMBRE:</strong> Dr. Malignus</div>
+            <div class="data-row"><strong>OCUPACIÓN:</strong> Químico</div>
+            <div class="data-row"><strong>COARTADA:</strong> "Estaba mezclando ácidos."</div>
+            <div class="fingerprint-box">
+                (Poner Huella Índice Derecho)
+                <span style="position:absolute; top:5px; right:5px; font-size:0.8em;" class="uv-clue">RESIDUO:
+                    AZUFRE</span>
+            </div>
+        </div>
+
+        <!-- Suspect 2 -->
+        <div class="suspect-card">
+            <div class="mugshot">🕵️‍♀️</div>
+            <div class="data-row"><strong>NOMBRE:</strong> Condesa Von Robbi</div>
+            <div class="data-row"><strong>OCUPACIÓN:</strong> Ladrona de Joyas</div>
+            <div class="data-row"><strong>COARTADA:</strong> "Estaba en la ópera."</div>
+            <div class="fingerprint-box">
+                (Poner Huella Índice Derecho)
+                <span style="position:absolute; top:5px; right:5px; font-size:0.8em;" class="uv-clue">RESIDUO:
+                    PURPURINA</span>
+            </div>
+        </div>
+
+        <!-- Suspect 3 -->
+        <div class="suspect-card">
+            <div class="mugshot">👨‍🍳</div>
+            <div class="data-row"><strong>NOMBRE:</strong> Chef Luigi</div>
+            <div class="data-row"><strong>OCUPACIÓN:</strong> Cocinero</div>
+            <div class="data-row"><strong>COARTADA:</strong> "Hacía pizza."</div>
+            <div class="fingerprint-box">
+                (Poner Huella Índice Derecho)
+                <span style="position:absolute; top:5px; right:5px; font-size:0.8em;" class="uv-clue">RESIDUO:
+                    HARINA</span>
+            </div>
+        </div>
+
+        <!-- Suspect 4 -->
+        <div class="suspect-card">
+            <div class="mugshot">👩‍🔧</div>
+            <div class="data-row"><strong>NOMBRE:</strong> Mecánica Ana</div>
+            <div class="data-row"><strong>OCUPACIÓN:</strong> Ingeniera</div>
+            <div class="data-row"><strong>COARTADA:</strong> "Reparaba el robot."</div>
+            <div class="fingerprint-box">
+                (Poner Huella Índice Derecho)
+                <span style="position:absolute; top:5px; right:5px; font-size:0.8em;" class="uv-clue">RESIDUO:
+                    ACEITE</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px; border: 2px dashed red; background: #fff0f0;">
+        <h3>🔦 NOTA PARA DETECTIVES (OPCION LINTERNA UV)</h3>
+        <p>Si tenéis linternas UV, buscad rastros invisibles en las fichas de los sospechosos o en la escena del crimen.
+            Si no, usad lupa para comparar los patrones de las huellas (Arco, Lazo o Espiral).</p>
+    </div>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+    <button class="no-print"
+        style="display: block; margin: 30px auto; padding: 10px 20px; background: #333; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 5px;"
+        onclick="window.print()">🖨️ IMPRIMIR FICHAS</button>
+
+</body>
+
+</html>
